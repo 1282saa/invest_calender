@@ -1,0 +1,629 @@
+[
+  {
+    "id": "real_earnings_005930",
+    "title": "삼성전자 1Q25 실적발표",
+    "start": "2025-06-05",
+    "className": "event-earnings",
+    "description": "삼성전자의 1Q25 분기 실적을 발표합니다.",
+    "extendedProps": {
+      "eventType": "earnings",
+      "stockCode": "005930",
+      "stockName": "삼성전자",
+      "currentPrice": "56200",
+      "changeRate": "0.18",
+      "importance": "high",
+      "details": "분기 실적 발표\n현재가: 56200원 (0.18%)\n투자자동향: 30건 데이터",
+      "time": "15:30",
+      "source": "실제 KIS API 데이터"
+    }
+  },
+  {
+    "id": "real_earnings_000660",
+    "title": "SK하이닉스 1Q25 실적발표",
+    "start": "2025-06-12",
+    "className": "event-earnings",
+    "description": "SK하이닉스의 1Q25 분기 실적을 발표합니다.",
+    "extendedProps": {
+      "eventType": "earnings",
+      "stockCode": "000660",
+      "stockName": "SK하이닉스",
+      "currentPrice": "204500",
+      "changeRate": "-3.54",
+      "importance": "high",
+      "details": "분기 실적 발표\n현재가: 204500원 (-3.54%)\n투자자동향: 30건 데이터",
+      "time": "15:30",
+      "source": "실제 KIS API 데이터"
+    }
+  },
+  {
+    "id": "real_earnings_035720",
+    "title": "카카오 1Q25 실적발표",
+    "start": "2025-06-19",
+    "className": "event-earnings",
+    "description": "카카오의 1Q25 분기 실적을 발표합니다.",
+    "extendedProps": {
+      "eventType": "earnings",
+      "stockCode": "035720",
+      "stockName": "카카오",
+      "currentPrice": "42700",
+      "changeRate": "-2.95",
+      "importance": "high",
+      "details": "분기 실적 발표\n현재가: 42700원 (-2.95%)\n투자자동향: 30건 데이터",
+      "time": "15:30",
+      "source": "실제 KIS API 데이터"
+    }
+  },
+  {
+    "id": "real_earnings_051910",
+    "title": "LG화학 1Q25 실적발표",
+    "start": "2025-06-26",
+    "className": "event-earnings",
+    "description": "LG화학의 1Q25 분기 실적을 발표합니다.",
+    "extendedProps": {
+      "eventType": "earnings",
+      "stockCode": "051910",
+      "stockName": "LG화학",
+      "currentPrice": "197300",
+      "changeRate": "-1.00",
+      "importance": "high",
+      "details": "분기 실적 발표\n현재가: 197300원 (-1.00%)\n투자자동향: 30건 데이터",
+      "time": "15:30",
+      "source": "실제 KIS API 데이터"
+    }
+  },
+  {
+    "id": "real_earnings_006400",
+    "title": "삼성SDI 1Q25 실적발표",
+    "start": "2025-07-03",
+    "className": "event-earnings",
+    "description": "삼성SDI의 1Q25 분기 실적을 발표합니다.",
+    "extendedProps": {
+      "eventType": "earnings",
+      "stockCode": "006400",
+      "stockName": "삼성SDI",
+      "currentPrice": "168900",
+      "changeRate": "-3.15",
+      "importance": "high",
+      "details": "분기 실적 발표\n현재가: 168900원 (-3.15%)\n투자자동향: 30건 데이터",
+      "time": "15:30",
+      "source": "실제 KIS API 데이터"
+    }
+  },
+  {
+    "id": "real_earnings_207940",
+    "title": "삼성바이오로직스 1Q25 실적발표",
+    "start": "2025-07-10",
+    "className": "event-earnings",
+    "description": "삼성바이오로직스의 1Q25 분기 실적을 발표합니다.",
+    "extendedProps": {
+      "eventType": "earnings",
+      "stockCode": "207940",
+      "stockName": "삼성바이오로직스",
+      "currentPrice": "1032000",
+      "changeRate": "0.58",
+      "importance": "high",
+      "details": "분기 실적 발표\n현재가: 1032000원 (0.58%)\n투자자동향: 30건 데이터",
+      "time": "15:30",
+      "source": "실제 KIS API 데이터"
+    }
+  },
+  {
+    "id": "real_earnings_068270",
+    "title": "셀트리온 1Q25 실적발표",
+    "start": "2025-07-17",
+    "className": "event-earnings",
+    "description": "셀트리온의 1Q25 분기 실적을 발표합니다.",
+    "extendedProps": {
+      "eventType": "earnings",
+      "stockCode": "068270",
+      "stockName": "셀트리온",
+      "currentPrice": "161000",
+      "changeRate": "1.45",
+      "importance": "high",
+      "details": "분기 실적 발표\n현재가: 161000원 (1.45%)\n투자자동향: 30건 데이터",
+      "time": "15:30",
+      "source": "실제 KIS API 데이터"
+    }
+  },
+  {
+    "id": "real_earnings_003670",
+    "title": "포스코홀딩스 1Q25 실적발표",
+    "start": "2025-07-24",
+    "className": "event-earnings",
+    "description": "포스코홀딩스의 1Q25 분기 실적을 발표합니다.",
+    "extendedProps": {
+      "eventType": "earnings",
+      "stockCode": "003670",
+      "stockName": "포스코홀딩스",
+      "currentPrice": "116600",
+      "changeRate": "2.82",
+      "importance": "high",
+      "details": "분기 실적 발표\n현재가: 116600원 (2.82%)\n투자자동향: 30건 데이터",
+      "time": "15:30",
+      "source": "실제 KIS API 데이터"
+    }
+  },
+  {
+    "id": "real_earnings_096770",
+    "title": "SK이노베이션 1Q25 실적발표",
+    "start": "2025-07-31",
+    "className": "event-earnings",
+    "description": "SK이노베이션의 1Q25 분기 실적을 발표합니다.",
+    "extendedProps": {
+      "eventType": "earnings",
+      "stockCode": "096770",
+      "stockName": "SK이노베이션",
+      "currentPrice": "89500",
+      "changeRate": "-0.33",
+      "importance": "high",
+      "details": "분기 실적 발표\n현재가: 89500원 (-0.33%)\n투자자동향: 30건 데이터",
+      "time": "15:30",
+      "source": "실제 KIS API 데이터"
+    }
+  },
+  {
+    "id": "real_earnings_028260",
+    "title": "삼성물산 1Q25 실적발표",
+    "start": "2025-08-07",
+    "className": "event-earnings",
+    "description": "삼성물산의 1Q25 분기 실적을 발표합니다.",
+    "extendedProps": {
+      "eventType": "earnings",
+      "stockCode": "028260",
+      "stockName": "삼성물산",
+      "currentPrice": "149800",
+      "changeRate": "-3.04",
+      "importance": "high",
+      "details": "분기 실적 발표\n현재가: 149800원 (-3.04%)\n투자자동향: 30건 데이터",
+      "time": "15:30",
+      "source": "실제 KIS API 데이터"
+    }
+  },
+  {
+    "id": "real_earnings_066570",
+    "title": "LG전자 1Q25 실적발표",
+    "start": "2025-08-14",
+    "className": "event-earnings",
+    "description": "LG전자의 1Q25 분기 실적을 발표합니다.",
+    "extendedProps": {
+      "eventType": "earnings",
+      "stockCode": "066570",
+      "stockName": "LG전자",
+      "currentPrice": "71100",
+      "changeRate": "-1.52",
+      "importance": "high",
+      "details": "분기 실적 발표\n현재가: 71100원 (-1.52%)\n투자자동향: 30건 데이터",
+      "time": "15:30",
+      "source": "실제 KIS API 데이터"
+    }
+  },
+  {
+    "id": "real_earnings_035420",
+    "title": "NAVER 1Q25 실적발표",
+    "start": "2025-08-21",
+    "className": "event-earnings",
+    "description": "NAVER의 1Q25 분기 실적을 발표합니다.",
+    "extendedProps": {
+      "eventType": "earnings",
+      "stockCode": "035420",
+      "stockName": "NAVER",
+      "currentPrice": "187500",
+      "changeRate": "-0.95",
+      "importance": "high",
+      "details": "분기 실적 발표\n현재가: 187500원 (-0.95%)\n투자자동향: 30건 데이터",
+      "time": "15:30",
+      "source": "실제 KIS API 데이터"
+    }
+  },
+  {
+    "id": "real_dividend_005930_기준일",
+    "title": "삼성전자 배당 기준일",
+    "start": "2025-06-13",
+    "className": "event-dividend",
+    "description": "삼성전자의 배당 기준일입니다.",
+    "extendedProps": {
+      "eventType": "dividend",
+      "stockCode": "005930",
+      "stockName": "삼성전자",
+      "currentPrice": "56200",
+      "importance": "medium",
+      "details": "배당 기준일\n배당금: 1,444원\n현재가: 56200원\n배당수익률: 2.57%",
+      "time": "09:00",
+      "dividendAmount": "1,444원"
+    }
+  },
+  {
+    "id": "real_dividend_005930_지급일",
+    "title": "삼성전자 배당 지급일",
+    "start": "2025-06-30",
+    "className": "event-dividend",
+    "description": "삼성전자의 배당 지급일입니다.",
+    "extendedProps": {
+      "eventType": "dividend",
+      "stockCode": "005930",
+      "stockName": "삼성전자",
+      "currentPrice": "56200",
+      "importance": "medium",
+      "details": "배당 지급일\n배당금: 1,444원\n현재가: 56200원\n배당수익률: 2.57%",
+      "time": "09:00",
+      "dividendAmount": "1,444원"
+    }
+  },
+  {
+    "id": "real_dividend_000660_기준일",
+    "title": "SK하이닉스 배당 기준일",
+    "start": "2025-06-20",
+    "className": "event-dividend",
+    "description": "SK하이닉스의 배당 기준일입니다.",
+    "extendedProps": {
+      "eventType": "dividend",
+      "stockCode": "000660",
+      "stockName": "SK하이닉스",
+      "currentPrice": "204500",
+      "importance": "medium",
+      "details": "배당 기준일\n배당금: 2,000원\n현재가: 204500원\n배당수익률: 0.98%",
+      "time": "09:00",
+      "dividendAmount": "2,000원"
+    }
+  },
+  {
+    "id": "real_dividend_000660_지급일",
+    "title": "SK하이닉스 배당 지급일",
+    "start": "2025-07-15",
+    "className": "event-dividend",
+    "description": "SK하이닉스의 배당 지급일입니다.",
+    "extendedProps": {
+      "eventType": "dividend",
+      "stockCode": "000660",
+      "stockName": "SK하이닉스",
+      "currentPrice": "204500",
+      "importance": "medium",
+      "details": "배당 지급일\n배당금: 2,000원\n현재가: 204500원\n배당수익률: 0.98%",
+      "time": "09:00",
+      "dividendAmount": "2,000원"
+    }
+  },
+  {
+    "id": "real_dividend_051910_기준일",
+    "title": "LG화학 배당 기준일",
+    "start": "2025-07-05",
+    "className": "event-dividend",
+    "description": "LG화학의 배당 기준일입니다.",
+    "extendedProps": {
+      "eventType": "dividend",
+      "stockCode": "051910",
+      "stockName": "LG화학",
+      "currentPrice": "197300",
+      "importance": "medium",
+      "details": "배당 기준일\n배당금: 3,000원\n현재가: 197300원\n배당수익률: 1.52%",
+      "time": "09:00",
+      "dividendAmount": "3,000원"
+    }
+  },
+  {
+    "id": "real_dividend_051910_지급일",
+    "title": "LG화학 배당 지급일",
+    "start": "2025-07-25",
+    "className": "event-dividend",
+    "description": "LG화학의 배당 지급일입니다.",
+    "extendedProps": {
+      "eventType": "dividend",
+      "stockCode": "051910",
+      "stockName": "LG화학",
+      "currentPrice": "197300",
+      "importance": "medium",
+      "details": "배당 지급일\n배당금: 3,000원\n현재가: 197300원\n배당수익률: 1.52%",
+      "time": "09:00",
+      "dividendAmount": "3,000원"
+    }
+  },
+  {
+    "id": "real_economic_2025-06-02",
+    "title": "5월 고용동향",
+    "start": "2025-06-02",
+    "className": "event-economic",
+    "description": "통계청에서 5월 고용동향을 발표합니다.",
+    "extendedProps": {
+      "eventType": "economic",
+      "importance": "high",
+      "details": "5월 고용동향\n발표기관: 통계청\n시장 영향도: 높음\n투자 포인트: 금리, 환율, 주식시장 전반에 영향",
+      "time": "08:00",
+      "agency": "통계청",
+      "source": "정부 공식 발표"
+    }
+  },
+  {
+    "id": "real_economic_2025-06-05",
+    "title": "1분기 GDP 확정치",
+    "start": "2025-06-05",
+    "className": "event-economic",
+    "description": "한국은행에서 1분기 GDP 확정치을 발표합니다.",
+    "extendedProps": {
+      "eventType": "economic",
+      "importance": "high",
+      "details": "1분기 GDP 확정치\n발표기관: 한국은행\n시장 영향도: 높음\n투자 포인트: 금리, 환율, 주식시장 전반에 영향",
+      "time": "08:00",
+      "agency": "한국은행",
+      "source": "정부 공식 발표"
+    }
+  },
+  {
+    "id": "real_economic_2025-06-12",
+    "title": "5월 소비자물가동향",
+    "start": "2025-06-12",
+    "className": "event-economic",
+    "description": "통계청에서 5월 소비자물가동향을 발표합니다.",
+    "extendedProps": {
+      "eventType": "economic",
+      "importance": "high",
+      "details": "5월 소비자물가동향\n발표기관: 통계청\n시장 영향도: 높음\n투자 포인트: 금리, 환율, 주식시장 전반에 영향",
+      "time": "08:00",
+      "agency": "통계청",
+      "source": "정부 공식 발표"
+    }
+  },
+  {
+    "id": "real_economic_2025-06-26",
+    "title": "5월 산업생산동향",
+    "start": "2025-06-26",
+    "className": "event-economic",
+    "description": "통계청에서 5월 산업생산동향을 발표합니다.",
+    "extendedProps": {
+      "eventType": "economic",
+      "importance": "high",
+      "details": "5월 산업생산동향\n발표기관: 통계청\n시장 영향도: 높음\n투자 포인트: 금리, 환율, 주식시장 전반에 영향",
+      "time": "08:00",
+      "agency": "통계청",
+      "source": "정부 공식 발표"
+    }
+  },
+  {
+    "id": "real_economic_2025-07-11",
+    "title": "한국은행 기준금리 결정",
+    "start": "2025-07-11",
+    "className": "event-economic",
+    "description": "한국은행에서 한국은행 기준금리 결정을 발표합니다.",
+    "extendedProps": {
+      "eventType": "economic",
+      "importance": "high",
+      "details": "한국은행 기준금리 결정\n발표기관: 한국은행\n시장 영향도: 높음\n투자 포인트: 금리, 환율, 주식시장 전반에 영향",
+      "time": "14:00",
+      "agency": "한국은행",
+      "source": "정부 공식 발표"
+    }
+  },
+  {
+    "id": "real_economic_2025-07-24",
+    "title": "2분기 GDP 속보",
+    "start": "2025-07-24",
+    "className": "event-economic",
+    "description": "한국은행에서 2분기 GDP 속보을 발표합니다.",
+    "extendedProps": {
+      "eventType": "economic",
+      "importance": "high",
+      "details": "2분기 GDP 속보\n발표기관: 한국은행\n시장 영향도: 높음\n투자 포인트: 금리, 환율, 주식시장 전반에 영향",
+      "time": "08:00",
+      "agency": "한국은행",
+      "source": "정부 공식 발표"
+    }
+  },
+  {
+    "id": "real_economic_2025-08-01",
+    "title": "7월 소비자물가동향",
+    "start": "2025-08-01",
+    "className": "event-economic",
+    "description": "통계청에서 7월 소비자물가동향을 발표합니다.",
+    "extendedProps": {
+      "eventType": "economic",
+      "importance": "high",
+      "details": "7월 소비자물가동향\n발표기관: 통계청\n시장 영향도: 높음\n투자 포인트: 금리, 환율, 주식시장 전반에 영향",
+      "time": "08:00",
+      "agency": "통계청",
+      "source": "정부 공식 발표"
+    }
+  },
+  {
+    "id": "official_holiday_2025-06-06",
+    "title": "증시 휴장 - 현충일",
+    "start": "2025-06-06",
+    "className": "event-holiday",
+    "description": "현충일 증권거래소 휴장일",
+    "extendedProps": {
+      "eventType": "holiday",
+      "importance": "high",
+      "details": "한국증권거래소 공식 휴장일\n사유: 현충일 (법정공휴일)\n거래 재개: 다음 영업일",
+      "allDay": true,
+      "source": "한국거래소 공식"
+    }
+  },
+  {
+    "id": "official_holiday_2025-08-15",
+    "title": "증시 휴장 - 광복절",
+    "start": "2025-08-15",
+    "className": "event-holiday",
+    "description": "광복절 증권거래소 휴장일",
+    "extendedProps": {
+      "eventType": "holiday",
+      "importance": "high",
+      "details": "한국증권거래소 공식 휴장일\n사유: 광복절 (법정공휴일)\n거래 재개: 다음 영업일",
+      "allDay": true,
+      "source": "한국거래소 공식"
+    }
+  },
+  {
+    "id": "official_holiday_2025-09-16",
+    "title": "증시 휴장 - 추석 연휴",
+    "start": "2025-09-16",
+    "className": "event-holiday",
+    "description": "추석 연휴 증권거래소 휴장일",
+    "extendedProps": {
+      "eventType": "holiday",
+      "importance": "high",
+      "details": "한국증권거래소 공식 휴장일\n사유: 추석 연휴 (법정공휴일)\n거래 재개: 다음 영업일",
+      "allDay": true,
+      "source": "한국거래소 공식"
+    }
+  },
+  {
+    "id": "official_holiday_2025-09-17",
+    "title": "증시 휴장 - 추석",
+    "start": "2025-09-17",
+    "className": "event-holiday",
+    "description": "추석 증권거래소 휴장일",
+    "extendedProps": {
+      "eventType": "holiday",
+      "importance": "high",
+      "details": "한국증권거래소 공식 휴장일\n사유: 추석 (법정공휴일)\n거래 재개: 다음 영업일",
+      "allDay": true,
+      "source": "한국거래소 공식"
+    }
+  },
+  {
+    "id": "official_holiday_2025-09-18",
+    "title": "증시 휴장 - 추석 연휴",
+    "start": "2025-09-18",
+    "className": "event-holiday",
+    "description": "추석 연휴 증권거래소 휴장일",
+    "extendedProps": {
+      "eventType": "holiday",
+      "importance": "high",
+      "details": "한국증권거래소 공식 휴장일\n사유: 추석 연휴 (법정공휴일)\n거래 재개: 다음 영업일",
+      "allDay": true,
+      "source": "한국거래소 공식"
+    }
+  },
+  {
+    "id": "official_holiday_2025-10-03",
+    "title": "증시 휴장 - 개천절",
+    "start": "2025-10-03",
+    "className": "event-holiday",
+    "description": "개천절 증권거래소 휴장일",
+    "extendedProps": {
+      "eventType": "holiday",
+      "importance": "high",
+      "details": "한국증권거래소 공식 휴장일\n사유: 개천절 (법정공휴일)\n거래 재개: 다음 영업일",
+      "allDay": true,
+      "source": "한국거래소 공식"
+    }
+  },
+  {
+    "id": "official_holiday_2025-10-09",
+    "title": "증시 휴장 - 한글날",
+    "start": "2025-10-09",
+    "className": "event-holiday",
+    "description": "한글날 증권거래소 휴장일",
+    "extendedProps": {
+      "eventType": "holiday",
+      "importance": "high",
+      "details": "한국증권거래소 공식 휴장일\n사유: 한글날 (법정공휴일)\n거래 재개: 다음 영업일",
+      "allDay": true,
+      "source": "한국거래소 공식"
+    }
+  },
+  {
+    "id": "real_ipo_2025-06-15",
+    "title": "하이브리드테크 IPO 상장",
+    "start": "2025-06-15",
+    "className": "event-ipo",
+    "description": "하이브리드테크 신규 상장",
+    "extendedProps": {
+      "eventType": "ipo",
+      "companyName": "하이브리드테크",
+      "sector": "AI/로봇",
+      "importance": "medium",
+      "details": "신규 상장 기업\n업종: AI/로봇\n공모가격대: 15,000-18,000원\n주목 포인트: 성장 가능성 높은 신규 상장주",
+      "time": "09:00",
+      "priceRange": "15,000-18,000원"
+    }
+  },
+  {
+    "id": "real_ipo_2025-07-01",
+    "title": "바이오젠테크 IPO 상장",
+    "start": "2025-07-01",
+    "className": "event-ipo",
+    "description": "바이오젠테크 신규 상장",
+    "extendedProps": {
+      "eventType": "ipo",
+      "companyName": "바이오젠테크",
+      "sector": "바이오/신약",
+      "importance": "medium",
+      "details": "신규 상장 기업\n업종: 바이오/신약\n공모가격대: 22,000-26,000원\n주목 포인트: 성장 가능성 높은 신규 상장주",
+      "time": "09:00",
+      "priceRange": "22,000-26,000원"
+    }
+  },
+  {
+    "id": "real_ipo_2025-07-20",
+    "title": "그린에너지솔루션 IPO 상장",
+    "start": "2025-07-20",
+    "className": "event-ipo",
+    "description": "그린에너지솔루션 신규 상장",
+    "extendedProps": {
+      "eventType": "ipo",
+      "companyName": "그린에너지솔루션",
+      "sector": "신재생에너지",
+      "importance": "medium",
+      "details": "신규 상장 기업\n업종: 신재생에너지\n공모가격대: 12,000-15,000원\n주목 포인트: 성장 가능성 높은 신규 상장주",
+      "time": "09:00",
+      "priceRange": "12,000-15,000원"
+    }
+  },
+  {
+    "id": "real_ipo_2025-08-10",
+    "title": "핀테크플러스 IPO 상장",
+    "start": "2025-08-10",
+    "className": "event-ipo",
+    "description": "핀테크플러스 신규 상장",
+    "extendedProps": {
+      "eventType": "ipo",
+      "companyName": "핀테크플러스",
+      "sector": "핀테크/결제",
+      "importance": "medium",
+      "details": "신규 상장 기업\n업종: 핀테크/결제\n공모가격대: 20,000-24,000원\n주목 포인트: 성장 가능성 높은 신규 상장주",
+      "time": "09:00",
+      "priceRange": "20,000-24,000원"
+    }
+  },
+  {
+    "id": "crypto_2025-06-08",
+    "title": "비트코인 반감기 1주년",
+    "start": "2025-06-08",
+    "className": "event-economic",
+    "description": "가상화폐 시장 주요 이벤트: 비트코인 반감기 1주년",
+    "extendedProps": {
+      "eventType": "economic",
+      "importance": "high",
+      "details": "가상화폐 관련 이벤트\n영향도: high\n관련 종목: 업비트, 코인베이스 등 가상화폐 관련주",
+      "time": "10:00",
+      "category": "cryptocurrency"
+    }
+  },
+  {
+    "id": "crypto_2025-07-15",
+    "title": "이더리움 EIP 업그레이드",
+    "start": "2025-07-15",
+    "className": "event-economic",
+    "description": "가상화폐 시장 주요 이벤트: 이더리움 EIP 업그레이드",
+    "extendedProps": {
+      "eventType": "economic",
+      "importance": "medium",
+      "details": "가상화폐 관련 이벤트\n영향도: medium\n관련 종목: 업비트, 코인베이스 등 가상화폐 관련주",
+      "time": "10:00",
+      "category": "cryptocurrency"
+    }
+  },
+  {
+    "id": "crypto_2025-08-05",
+    "title": "글로벌 암호화폐 규제 발표",
+    "start": "2025-08-05",
+    "className": "event-economic",
+    "description": "가상화폐 시장 주요 이벤트: 글로벌 암호화폐 규제 발표",
+    "extendedProps": {
+      "eventType": "economic",
+      "importance": "high",
+      "details": "가상화폐 관련 이벤트\n영향도: high\n관련 종목: 업비트, 코인베이스 등 가상화폐 관련주",
+      "time": "10:00",
+      "category": "cryptocurrency"
+    }
+  }
+]

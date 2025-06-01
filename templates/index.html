@@ -1,0 +1,2264 @@
+<!DOCTYPE html>
+<html lang="ko" x-data="{ darkMode: false }" :class="{ 'dark': darkMode }">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InvestCalendar - 스마트한 투자 일정 관리</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                50: "#eff6ff",
+                100: "#dbeafe",
+                200: "#bfdbfe",
+                300: "#93c5fd",
+                400: "#60a5fa",
+                500: "#3b82f6",
+                600: "#2563eb",
+                700: "#1d4ed8",
+                800: "#1e40af",
+                900: "#1e3a8a",
+                950: "#172554",
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- Alpine.js -->
+    <script
+      defer
+      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+
+    <!-- FullCalendar -->
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <style>
+      body {
+        font-family: "Inter", "Noto Sans KR", sans-serif;
+      }
+
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+      }
+
+      ::-webkit-scrollbar-track {
+        @apply bg-gray-100 dark:bg-gray-800;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        @apply bg-gray-300 dark:bg-gray-600 rounded-full;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        @apply bg-gray-400 dark:bg-gray-500;
+      }
+
+      /* Calendar custom styles */
+      .fc {
+        font-family: "Inter", "Noto Sans KR", sans-serif;
+      }
+
+      .dark .fc-theme-standard td,
+      .dark .fc-theme-standard th {
+        border-color: #374151;
+      }
+
+      .dark .fc-theme-standard .fc-scrollgrid {
+        border-color: #374151;
+      }
+
+      .fc-toolbar-title {
+        @apply text-2xl font-bold text-gray-900 dark:text-white;
+      }
+
+      .fc-button {
+        @apply bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 font-medium px-4 py-2 rounded-lg transition-all hover:bg-gray-50 dark:hover:bg-gray-700;
+      }
+
+      .fc-button-active {
+        @apply bg-primary-600 text-white border-primary-600 hover:bg-primary-700;
+      }
+
+      .fc-event {
+        @apply border-0 px-2 py-1 text-xs font-medium cursor-pointer transition-all rounded;
+      }
+
+      .fc-event:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+      }
+
+      /* Event type colors */
+      .event-earnings {
+        @apply bg-green-500 text-white;
+      }
+      .event-dividend {
+        @apply bg-amber-500 text-white;
+      }
+      .event-disclosure {
+        @apply bg-blue-500 text-white;
+      }
+      .event-holiday {
+        @apply bg-red-500 text-white;
+      }
+      .event-ipo {
+        @apply bg-purple-500 text-white;
+      }
+      .event-meeting {
+        @apply bg-pink-500 text-white;
+      }
+      .event-economic {
+        @apply bg-teal-500 text-white;
+      }
+      .event-personal {
+        @apply bg-gray-500 text-white;
+      }
+
+      /* Animations */
+      @keyframes slideInRight {
+        from {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideInUp {
+        from {
+          transform: translateY(20px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      .slide-in-right {
+        animation: slideInRight 0.3s ease-out;
+      }
+
+      .slide-in-up {
+        animation: slideInUp 0.3s ease-out;
+      }
+
+      /* Loading spinner */
+      .loading-spinner {
+        border: 3px solid rgba(0, 0, 0, 0.1);
+        border-left-color: #3b82f6;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Glass morphism effect */
+      .glass {
+        @apply bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg;
+      }
+
+      /* Gradient text */
+      .gradient-text {
+        @apply bg-gradient-to-r from-primary-600 to-purple-600 bg-clip-text text-transparent;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-gray-50 dark:bg-gray-900 transition-colors duration-300"
+    x-data="calendarApp()"
+    x-init="init()"
+    :class="{ 'dark': darkMode }"
+  >
+    <!-- Navigation -->
+    <nav
+      class="glass sticky top-0 z-50 border-b border-gray-200 dark:border-gray-700"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+          <div class="flex items-center">
+            <div class="flex-shrink-0 flex items-center">
+              <i class="fas fa-chart-line text-primary-600 text-2xl mr-3"></i>
+              <h1 class="text-xl font-bold gradient-text">InvestCalendar</h1>
+            </div>
+            <div class="hidden sm:ml-8 sm:flex sm:space-x-8">
+              <a
+                href="#"
+                @click="activeTab = 'calendar'"
+                :class="activeTab === 'calendar' ? 'border-primary-500 text-primary-600 dark:text-primary-400' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 dark:text-gray-300 dark:hover:text-white'"
+                class="inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors"
+              >
+                <i class="fas fa-calendar-alt mr-2"></i>
+                캘린더
+              </a>
+              <a
+                href="#"
+                @click="activeTab = 'market'"
+                :class="activeTab === 'market' ? 'border-primary-500 text-primary-600 dark:text-primary-400' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 dark:text-gray-300 dark:hover:text-white'"
+                class="inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors"
+              >
+                <i class="fas fa-chart-bar mr-2"></i>
+                시장현황
+              </a>
+              <a
+                href="#"
+                @click="activeTab = 'watchlist'"
+                :class="activeTab === 'watchlist' ? 'border-primary-500 text-primary-600 dark:text-primary-400' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 dark:text-gray-300 dark:hover:text-white'"
+                class="inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors"
+              >
+                <i class="fas fa-star mr-2"></i>
+                관심종목
+              </a>
+              <a
+                href="#"
+                @click="activeTab = 'global'"
+                :class="activeTab === 'global' ? 'border-primary-500 text-primary-600 dark:text-primary-400' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 dark:text-gray-300 dark:hover:text-white'"
+                class="inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors"
+              >
+                <i class="fas fa-globe mr-2"></i>
+                글로벌
+              </a>
+              <a
+                href="#"
+                @click="activeTab = 'analysis'"
+                :class="activeTab === 'analysis' ? 'border-primary-500 text-primary-600 dark:text-primary-400' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 dark:text-gray-300 dark:hover:text-white'"
+                class="inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors"
+              >
+                <i class="fas fa-analytics mr-2"></i>
+                분석
+              </a>
+            </div>
+          </div>
+          <div class="flex items-center space-x-4">
+            <!-- Stock Search -->
+            <div class="relative hidden md:block">
+              <input
+                type="text"
+                x-model="searchQuery"
+                @input="searchStocks()"
+                placeholder="종목 검색..."
+                class="w-64 px-4 py-2 pr-10 text-sm bg-gray-100 dark:bg-gray-800 border-0 rounded-lg focus:ring-2 focus:ring-primary-500 dark:text-white"
+              />
+              <i
+                class="fas fa-search absolute right-3 top-2.5 text-gray-400"
+              ></i>
+
+              <!-- Search Results -->
+              <div
+                x-show="searchResults.length > 0"
+                x-transition
+                class="absolute top-full mt-2 w-full bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden"
+              >
+                <template
+                  x-for="stock in searchResults"
+                  :key="stock.stock_code"
+                >
+                  <a
+                    href="#"
+                    @click="selectStock(stock)"
+                    class="block px-4 py-2 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+                  >
+                    <div class="flex justify-between">
+                      <span
+                        class="font-medium text-gray-900 dark:text-white"
+                        x-text="stock.stock_name"
+                      ></span>
+                      <span
+                        class="text-sm text-gray-500 dark:text-gray-400"
+                        x-text="stock.stock_code"
+                      ></span>
+                    </div>
+                  </a>
+                </template>
+              </div>
+            </div>
+
+            <!-- Dark Mode Toggle -->
+            <button
+              @click="darkMode = !darkMode"
+              class="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-white transition-colors"
+            >
+              <i class="fas" :class="darkMode ? 'fa-sun' : 'fa-moon'"></i>
+            </button>
+
+            <!-- Notifications -->
+            <button
+              class="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-white relative transition-colors"
+            >
+              <i class="fas fa-bell"></i>
+              <span
+                class="absolute -top-1 -right-1 h-2 w-2 bg-red-500 rounded-full animate-pulse"
+              ></span>
+            </button>
+
+            <!-- User Menu -->
+            <div class="relative" x-data="{ userMenuOpen: false }">
+              <button
+                @click="userMenuOpen = !userMenuOpen"
+                class="flex items-center space-x-2 p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-white transition-colors"
+              >
+                <img
+                  :src="user ? 'https://ui-avatars.com/api/?name=' + user.username : 'https://ui-avatars.com/api/?name=Guest'"
+                  class="w-8 h-8 rounded-full"
+                />
+              </button>
+
+              <div
+                x-show="userMenuOpen"
+                @click.away="userMenuOpen = false"
+                x-transition
+                class="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden"
+              >
+                <template x-if="user">
+                  <div>
+                    <div
+                      class="px-4 py-3 border-b border-gray-200 dark:border-gray-700"
+                    >
+                      <p
+                        class="text-sm font-medium text-gray-900 dark:text-white"
+                        x-text="user.username"
+                      ></p>
+                      <p
+                        class="text-xs text-gray-500 dark:text-gray-400"
+                        x-text="user.email"
+                      ></p>
+                    </div>
+                    <a
+                      href="#"
+                      class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700"
+                    >
+                      <i class="fas fa-user-circle mr-2"></i>프로필
+                    </a>
+                    <a
+                      href="#"
+                      class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700"
+                    >
+                      <i class="fas fa-cog mr-2"></i>설정
+                    </a>
+                    <hr class="border-gray-200 dark:border-gray-700" />
+                    <button
+                      @click="logout()"
+                      class="block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700"
+                    >
+                      <i class="fas fa-sign-out-alt mr-2"></i>로그아웃
+                    </button>
+                  </div>
+                </template>
+                <template x-if="!user">
+                  <div>
+                    <button
+                      @click="showLoginModal = true; userMenuOpen = false"
+                      class="block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700"
+                    >
+                      <i class="fas fa-sign-in-alt mr-2"></i>로그인
+                    </button>
+                    <button
+                      @click="showSignupModal = true; userMenuOpen = false"
+                      class="block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700"
+                    >
+                      <i class="fas fa-user-plus mr-2"></i>회원가입
+                    </button>
+                  </div>
+                </template>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <!-- Market Indices -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+        <div class="glass rounded-xl p-4 slide-in-up">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-sm font-medium text-gray-600 dark:text-gray-400"
+              >KOSPI</span
+            >
+            <i class="fas fa-chart-line text-gray-400"></i>
+          </div>
+          <div
+            class="text-2xl font-bold text-gray-900 dark:text-white"
+            x-text="marketIndices.kospi?.current_value || '-'"
+          ></div>
+          <div class="flex items-center mt-1">
+            <i
+              class="fas mr-1"
+              :class="marketIndices.kospi?.change_rate >= 0 ? 'fa-caret-up text-red-500' : 'fa-caret-down text-blue-500'"
+            ></i>
+            <span
+              class="text-sm font-medium"
+              :class="marketIndices.kospi?.change_rate >= 0 ? 'text-red-500' : 'text-blue-500'"
+              x-text="(marketIndices.kospi?.change_rate || 0) + '%'"
+            ></span>
+          </div>
+        </div>
+
+        <div
+          class="glass rounded-xl p-4 slide-in-up"
+          style="animation-delay: 0.1s"
+        >
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-sm font-medium text-gray-600 dark:text-gray-400"
+              >KOSDAQ</span
+            >
+            <i class="fas fa-chart-line text-gray-400"></i>
+          </div>
+          <div
+            class="text-2xl font-bold text-gray-900 dark:text-white"
+            x-text="marketIndices.kosdaq?.current_value || '-'"
+          ></div>
+          <div class="flex items-center mt-1">
+            <i
+              class="fas mr-1"
+              :class="marketIndices.kosdaq?.change_rate >= 0 ? 'fa-caret-up text-red-500' : 'fa-caret-down text-blue-500'"
+            ></i>
+            <span
+              class="text-sm font-medium"
+              :class="marketIndices.kosdaq?.change_rate >= 0 ? 'text-red-500' : 'text-blue-500'"
+              x-text="(marketIndices.kosdaq?.change_rate || 0) + '%'"
+            ></span>
+          </div>
+        </div>
+
+        <div
+          class="glass rounded-xl p-4 slide-in-up"
+          style="animation-delay: 0.2s"
+        >
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-sm font-medium text-gray-600 dark:text-gray-400"
+              >환율 (USD/KRW)</span
+            >
+            <i class="fas fa-dollar-sign text-gray-400"></i>
+          </div>
+          <div class="text-2xl font-bold text-gray-900 dark:text-white">
+            1,324.50
+          </div>
+          <div class="flex items-center mt-1">
+            <i class="fas fa-caret-up text-red-500 mr-1"></i>
+            <span class="text-sm font-medium text-red-500">+0.35%</span>
+          </div>
+        </div>
+
+        <div
+          class="glass rounded-xl p-4 slide-in-up"
+          style="animation-delay: 0.3s"
+        >
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-sm font-medium text-gray-600 dark:text-gray-400"
+              >금리</span
+            >
+            <i class="fas fa-percentage text-gray-400"></i>
+          </div>
+          <div class="text-2xl font-bold text-gray-900 dark:text-white">
+            3.50%
+          </div>
+          <div class="flex items-center mt-1">
+            <i class="fas fa-minus text-gray-500 mr-1"></i>
+            <span class="text-sm font-medium text-gray-500">0.00%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab Content -->
+      <div x-show="activeTab === 'calendar'" x-transition>
+        <div class="flex gap-6">
+          <!-- Left Sidebar -->
+          <div class="w-80 space-y-6">
+            <!-- Quick Stats -->
+            <div class="glass rounded-xl p-6">
+              <h3
+                class="text-lg font-semibold text-gray-900 dark:text-white mb-4"
+              >
+                오늘의 일정
+              </h3>
+              <div class="space-y-3">
+                <div
+                  class="flex items-center justify-between p-3 bg-green-50 dark:bg-green-900/20 rounded-lg"
+                >
+                  <div class="flex items-center">
+                    <div
+                      class="w-2 h-2 bg-green-500 rounded-full mr-3"
+                      :class="todayStats.earnings > 0 ? 'animate-pulse' : ''"
+                    ></div>
+                    <span
+                      class="text-sm font-medium text-gray-700 dark:text-gray-300"
+                      >실적발표</span
+                    >
+                  </div>
+                  <span
+                    class="text-sm font-semibold text-green-600 dark:text-green-400"
+                    x-text="todayStats.earnings + '건'"
+                  ></span>
+                </div>
+                <div
+                  class="flex items-center justify-between p-3 bg-amber-50 dark:bg-amber-900/20 rounded-lg"
+                >
+                  <div class="flex items-center">
+                    <div 
+                      class="w-2 h-2 bg-amber-500 rounded-full mr-3"
+                      :class="todayStats.dividend > 0 ? 'animate-pulse' : ''"
+                    ></div>
+                    <span
+                      class="text-sm font-medium text-gray-700 dark:text-gray-300"
+                      >배당</span
+                    >
+                  </div>
+                  <span
+                    class="text-sm font-semibold text-amber-600 dark:text-amber-400"
+                    x-text="todayStats.dividend + '건'"
+                  ></span>
+                </div>
+                <div
+                  class="flex items-center justify-between p-3 bg-teal-50 dark:bg-teal-900/20 rounded-lg"
+                >
+                  <div class="flex items-center">
+                    <div 
+                      class="w-2 h-2 bg-teal-500 rounded-full mr-3"
+                      :class="todayStats.economic > 0 ? 'animate-pulse' : ''"
+                    ></div>
+                    <span
+                      class="text-sm font-medium text-gray-700 dark:text-gray-300"
+                      >경제지표</span
+                    >
+                  </div>
+                  <span
+                    class="text-sm font-semibold text-teal-600 dark:text-teal-400"
+                    x-text="todayStats.economic + '건'"
+                  ></span>
+                </div>
+                <div
+                  class="flex items-center justify-between p-3 bg-purple-50 dark:bg-purple-900/20 rounded-lg"
+                >
+                  <div class="flex items-center">
+                    <div 
+                      class="w-2 h-2 bg-purple-500 rounded-full mr-3"
+                      :class="todayStats.ipo > 0 ? 'animate-pulse' : ''"
+                    ></div>
+                    <span
+                      class="text-sm font-medium text-gray-700 dark:text-gray-300"
+                      >신규상장</span
+                    >
+                  </div>
+                  <span
+                    class="text-sm font-semibold text-purple-600 dark:text-purple-400"
+                    x-text="todayStats.ipo + '건'"
+                  ></span>
+                </div>
+                <div
+                  class="flex items-center justify-between p-3 bg-red-50 dark:bg-red-900/20 rounded-lg"
+                >
+                  <div class="flex items-center">
+                    <div 
+                      class="w-2 h-2 bg-red-500 rounded-full mr-3"
+                      :class="todayStats.holiday > 0 ? 'animate-pulse' : ''"
+                    ></div>
+                    <span
+                      class="text-sm font-medium text-gray-700 dark:text-gray-300"
+                      >휴장일</span
+                    >
+                  </div>
+                  <span
+                    class="text-sm font-semibold text-red-600 dark:text-red-400"
+                    x-text="todayStats.holiday + '건'"
+                  ></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="glass rounded-xl p-6">
+              <h3
+                class="text-lg font-semibold text-gray-900 dark:text-white mb-4"
+              >
+                필터
+              </h3>
+              <div class="space-y-4">
+                <div>
+                  <label
+                    class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 block"
+                    >이벤트 타입</label
+                  >
+                  <div class="space-y-2">
+                    <template
+                      x-for="eventType in eventTypes"
+                      :key="eventType.id"
+                    >
+                      <label class="flex items-center group cursor-pointer">
+                        <input
+                          type="checkbox"
+                          x-model="selectedEventTypes"
+                          :value="eventType.id"
+                          class="rounded border-gray-300 dark:border-gray-600 text-primary-600 focus:ring-primary-500 dark:bg-gray-700"
+                        />
+                        <span
+                          class="ml-2 text-sm text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white transition-colors"
+                          x-text="eventType.name"
+                        ></span>
+                      </label>
+                    </template>
+                  </div>
+                </div>
+
+                <div>
+                  <label class="flex items-center group cursor-pointer">
+                    <input
+                      type="checkbox"
+                      x-model="bookmarkedOnly"
+                      class="rounded border-gray-300 dark:border-gray-600 text-primary-600 focus:ring-primary-500 dark:bg-gray-700"
+                    />
+                    <span
+                      class="ml-2 text-sm text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white transition-colors"
+                      >북마크한 일정만 보기</span
+                    >
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Upcoming Events -->
+            <div class="glass rounded-xl p-6">
+              <h3
+                class="text-lg font-semibold text-gray-900 dark:text-white mb-4"
+              >
+                다가오는 주요 일정
+              </h3>
+              <div class="space-y-3" x-show="upcomingEvents.length > 0">
+                <template x-for="event in upcomingEvents.slice(0, 5)" :key="event.id">
+                  <div
+                    class="border-l-4 pl-4 py-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-r cursor-pointer transition-colors"
+                    :class="{
+                      'border-green-500': event.extendedProps?.eventType === 'earnings',
+                      'border-amber-500': event.extendedProps?.eventType === 'dividend',
+                      'border-blue-500': event.extendedProps?.eventType === 'disclosure',
+                      'border-red-500': event.extendedProps?.eventType === 'holiday',
+                      'border-purple-500': event.extendedProps?.eventType === 'ipo',
+                      'border-pink-500': event.extendedProps?.eventType === 'meeting',
+                      'border-teal-500': event.extendedProps?.eventType === 'economic',
+                      'border-gray-500': event.extendedProps?.eventType === 'personal'
+                    }"
+                    @click="selectUpcomingEvent(event)"
+                  >
+                    <div class="flex items-center justify-between">
+                      <div>
+                        <div class="text-sm font-semibold text-gray-900 dark:text-white" x-text="event.title"></div>
+                        <div class="text-xs text-gray-500 dark:text-gray-400" x-text="formatEventDate(event.start)"></div>
+                      </div>
+                      <div class="flex items-center space-x-2">
+                        <span 
+                          class="px-2 py-1 text-xs font-medium rounded-full"
+                          :class="{
+                            'bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400': event.extendedProps?.importance === 'high',
+                            'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-400': event.extendedProps?.importance === 'medium',
+                            'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400': event.extendedProps?.importance === 'low'
+                          }"
+                          x-text="event.extendedProps?.importance === 'high' ? '높음' : event.extendedProps?.importance === 'medium' ? '보통' : '낮음'"
+                        ></span>
+                        <button
+                          @click.stop="explainEvent(event)"
+                          class="text-purple-600 hover:text-purple-700 dark:text-purple-400 text-xs"
+                        >
+                          <i class="fas fa-robot"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </template>
+              </div>
+              <div x-show="upcomingEvents.length === 0" class="text-center py-4 text-gray-500 dark:text-gray-400">
+                <i class="fas fa-calendar-times text-2xl mb-2"></i>
+                <p class="text-sm">다가오는 일정이 없습니다</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Calendar Container -->
+          <div class="flex-1">
+            <div class="glass rounded-xl p-6">
+              <div id="calendar" class="fc-custom"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Market Tab -->
+      <div x-show="activeTab === 'market'" x-transition>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <!-- Stock Price Chart -->
+          <div class="glass rounded-xl p-6">
+            <h3
+              class="text-lg font-semibold text-gray-900 dark:text-white mb-4"
+            >
+              주가 차트
+            </h3>
+            <canvas id="stockChart" width="400" height="200"></canvas>
+          </div>
+
+          <!-- Program Trading -->
+          <div class="glass rounded-xl p-6">
+            <h3
+              class="text-lg font-semibold text-gray-900 dark:text-white mb-4"
+            >
+              프로그램 매매 동향
+            </h3>
+            <div class="space-y-2" x-show="programTrades.length > 0">
+              <template
+                x-for="trade in programTrades.slice(0, 5)"
+                :key="trade.stock_code"
+              >
+                <div
+                  class="flex items-center justify-between p-3 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors"
+                >
+                  <div>
+                    <div
+                      class="font-medium text-gray-900 dark:text-white"
+                      x-text="trade.stock_name"
+                    ></div>
+                    <div
+                      class="text-xs text-gray-500 dark:text-gray-400"
+                      x-text="trade.stock_code"
+                    ></div>
+                  </div>
+                  <div class="text-right">
+                    <div
+                      class="font-medium"
+                      :class="trade.program_net_amount > 0 ? 'text-red-600 dark:text-red-400' : 'text-blue-600 dark:text-blue-400'"
+                      x-text="(trade.program_net_amount / 100000000).toFixed(1) + '억'"
+                    ></div>
+                  </div>
+                </div>
+              </template>
+            </div>
+            <div
+              x-show="programTrades.length === 0"
+              class="text-center py-8 text-gray-500 dark:text-gray-400"
+            >
+              데이터를 불러오는 중...
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Watchlist Tab -->
+      <div x-show="activeTab === 'watchlist'" x-transition>
+        <div class="glass rounded-xl p-6">
+          <div class="flex justify-between items-center mb-6">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white">
+              관심종목
+            </h3>
+            <button
+              @click="showAddWatchlistModal = true"
+              class="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
+            >
+              <i class="fas fa-plus mr-2"></i>종목 추가
+            </button>
+          </div>
+
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+            x-show="watchlist.length > 0"
+          >
+            <template x-for="item in watchlist" :key="item.stock_code">
+              <div
+                class="border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:shadow-lg transition-all"
+              >
+                <div class="flex justify-between items-start mb-2">
+                  <div>
+                    <h4
+                      class="font-semibold text-gray-900 dark:text-white"
+                      x-text="item.stock_name"
+                    ></h4>
+                    <p
+                      class="text-sm text-gray-500 dark:text-gray-400"
+                      x-text="item.stock_code"
+                    ></p>
+                  </div>
+                  <button
+                    @click="removeFromWatchlist(item.id)"
+                    class="text-gray-400 hover:text-red-600 dark:hover:text-red-400 transition-colors"
+                  >
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+                <div
+                  class="text-2xl font-bold text-gray-900 dark:text-white mb-1"
+                >
+                  52,300
+                </div>
+                <div class="flex items-center text-sm">
+                  <i class="fas fa-caret-up text-red-500 mr-1"></i>
+                  <span class="text-red-500">+2.35%</span>
+                </div>
+              </div>
+            </template>
+          </div>
+
+          <div x-show="watchlist.length === 0" class="text-center py-12">
+            <i
+              class="fas fa-star text-4xl text-gray-300 dark:text-gray-600 mb-4"
+            ></i>
+            <p class="text-gray-500 dark:text-gray-400">관심종목이 없습니다.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Global Tab -->
+      <div x-show="activeTab === 'global'" x-transition>
+        <div class="space-y-6">
+          <!-- 해외 주식 -->
+          <div class="glass rounded-xl p-6">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6">
+              🇺🇸 미국 주식
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" x-show="globalData.us_stocks && globalData.us_stocks.length > 0">
+              <template x-for="stock in globalData.us_stocks" :key="stock.symbol">
+                <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:shadow-lg transition-all">
+                  <div class="flex justify-between items-start mb-2">
+                    <div>
+                      <h4 class="font-semibold text-gray-900 dark:text-white" x-text="stock.name"></h4>
+                      <p class="text-sm text-gray-500 dark:text-gray-400" x-text="stock.symbol"></p>
+                    </div>
+                  </div>
+                  <div class="text-2xl font-bold text-gray-900 dark:text-white mb-1" x-text="'$' + stock.price"></div>
+                  <div class="flex items-center text-sm">
+                    <i class="fas mr-1" :class="parseFloat(stock.change_rate) >= 0 ? 'fa-caret-up text-red-500' : 'fa-caret-down text-blue-500'"></i>
+                    <span :class="parseFloat(stock.change_rate) >= 0 ? 'text-red-500' : 'text-blue-500'" x-text="stock.change_rate + '%'"></span>
+                  </div>
+                </div>
+              </template>
+            </div>
+            <div x-show="!globalData.us_stocks || globalData.us_stocks.length === 0" class="text-center py-8 text-gray-500 dark:text-gray-400">
+              미국 주식 데이터를 불러오는 중...
+            </div>
+          </div>
+
+          <!-- 가상화폐 -->
+          <div class="glass rounded-xl p-6">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6">
+              ₿ 가상화폐
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" x-show="globalData.cryptocurrencies && globalData.cryptocurrencies.length > 0">
+              <template x-for="crypto in globalData.cryptocurrencies" :key="crypto.symbol">
+                <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:shadow-lg transition-all bg-gradient-to-br from-orange-50 to-yellow-50 dark:from-orange-900/20 dark:to-yellow-900/20 cursor-pointer"
+                     @click="explainCrypto(crypto)">
+                  <div class="flex justify-between items-start mb-2">
+                    <div>
+                      <h4 class="font-semibold text-gray-900 dark:text-white" x-text="crypto.symbol"></h4>
+                      <p class="text-sm text-gray-500 dark:text-gray-400">가상화폐</p>
+                    </div>
+                    <button
+                      @click.stop="explainCrypto(crypto)"
+                      class="text-purple-600 hover:text-purple-700 dark:text-purple-400 text-sm"
+                    >
+                      <i class="fas fa-robot"></i>
+                    </button>
+                  </div>
+                  <div class="text-2xl font-bold text-gray-900 dark:text-white mb-1" x-text="crypto.price.toLocaleString() + '원'"></div>
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center text-sm">
+                      <i class="fas mr-1" :class="crypto.change_rate >= 0 ? 'fa-caret-up text-red-500' : 'fa-caret-down text-blue-500'"></i>
+                      <span :class="crypto.change_rate >= 0 ? 'text-red-500' : 'text-blue-500'" x-text="crypto.change_rate.toFixed(2) + '%'"></span>
+                    </div>
+                    <span class="text-xs text-purple-600 dark:text-purple-400 font-medium">자세히 보기</span>
+                  </div>
+                </div>
+              </template>
+            </div>
+            <div x-show="!globalData.cryptocurrencies || globalData.cryptocurrencies.length === 0" class="text-center py-8 text-gray-500 dark:text-gray-400">
+              가상화폐 데이터를 불러오는 중...
+            </div>
+          </div>
+
+          <!-- 환율 -->
+          <div class="glass rounded-xl p-6">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6">
+              💱 환율 정보
+            </h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4" x-show="globalData.exchange_rates && globalData.exchange_rates.length > 0">
+              <template x-for="rate in globalData.exchange_rates" :key="rate.currency">
+                <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-4 text-center hover:shadow-lg transition-all bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20">
+                  <div class="text-lg font-semibold text-gray-900 dark:text-white mb-1" x-text="rate.currency + '/KRW'"></div>
+                  <div class="text-xl font-bold text-blue-600 dark:text-blue-400" x-text="rate.rate.toLocaleString()"></div>
+                </div>
+              </template>
+            </div>
+            <div x-show="!globalData.exchange_rates || globalData.exchange_rates.length === 0" class="text-center py-8 text-gray-500 dark:text-gray-400">
+              환율 데이터를 불러오는 중...
+            </div>
+          </div>
+
+          <!-- 실시간 업데이트 정보 -->
+          <div class="glass rounded-xl p-4">
+            <div class="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400">
+              <span>실시간 데이터 (30초마다 자동 업데이트)</span>
+              <span x-show="lastGlobalUpdate" x-text="'최종 업데이트: ' + lastGlobalUpdate"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Analysis Tab -->
+      <div x-show="activeTab === 'analysis'" x-transition>
+        <div class="space-y-6">
+          <!-- 오늘의 시장 이슈 -->
+          <div class="glass rounded-xl p-6">
+            <div class="flex items-center justify-between mb-6">
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white">
+                📈 오늘의 시장 이슈
+              </h3>
+              <button
+                @click="loadDailyMarketSummary()"
+                class="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors text-sm"
+              >
+                <i class="fas fa-refresh mr-2"></i>새로고침
+              </button>
+            </div>
+            
+            <div x-show="dailyMarketSummary" class="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-lg p-4">
+              <div class="flex items-start space-x-3">
+                <i class="fas fa-robot text-blue-600 dark:text-blue-400 text-lg mt-1"></i>
+                <div class="flex-1">
+                  <h4 class="font-semibold text-gray-900 dark:text-white mb-2" x-text="'AI 시장 분석 - ' + (dailyMarketSummary?.date || '')"></h4>
+                  <div class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed whitespace-pre-line" x-text="dailyMarketSummary?.summary || '시장 요약을 불러오는 중...'"></div>
+                </div>
+              </div>
+            </div>
+            
+            <div x-show="!dailyMarketSummary" class="text-center py-8">
+              <div class="loading-spinner mx-auto mb-4"></div>
+              <p class="text-gray-500 dark:text-gray-400">AI가 오늘의 시장 이슈를 분석하고 있습니다...</p>
+            </div>
+          </div>
+
+          <!-- AI 투자 도우미 -->
+          <div class="glass rounded-xl p-6">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6">
+              🤖 AI 투자 도우미
+            </h3>
+            <div class="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-lg p-4">
+              <div class="flex items-center space-x-3 mb-4">
+                <i class="fas fa-lightbulb text-purple-600 dark:text-purple-400 text-lg"></i>
+                <h4 class="font-semibold text-gray-900 dark:text-white">금융 용어가 어려우신가요?</h4>
+              </div>
+              <p class="text-gray-700 dark:text-gray-300 text-sm mb-4">
+                캘린더 이벤트나 종목 정보에서 <span class="font-semibold text-purple-600 dark:text-purple-400">"알아보기"</span> 버튼을 클릭하시면 
+                AI가 실시간으로 쉽고 명확하게 설명해드립니다.
+              </p>
+              <div class="flex items-center space-x-2 text-xs text-gray-500 dark:text-gray-400">
+                <i class="fas fa-info-circle"></i>
+                <span>Perplexity AI 기반 실시간 정보 제공</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Event Detail Modal -->
+    <div
+      x-show="showEventModal"
+      x-cloak
+      class="fixed inset-0 z-50 overflow-y-auto"
+      aria-labelledby="modal-title"
+      role="dialog"
+      aria-modal="true"
+    >
+      <div
+        class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0"
+      >
+        <div
+          x-show="showEventModal"
+          x-transition:enter="ease-out duration-300"
+          x-transition:enter-start="opacity-0"
+          x-transition:enter-end="opacity-100"
+          x-transition:leave="ease-in duration-200"
+          x-transition:leave-start="opacity-100"
+          x-transition:leave-end="opacity-0"
+          class="fixed inset-0 bg-gray-500 dark:bg-gray-900 bg-opacity-75 dark:bg-opacity-75 transition-opacity"
+          aria-hidden="true"
+          @click="showEventModal = false"
+        ></div>
+
+        <div
+          x-show="showEventModal"
+          x-transition:enter="ease-out duration-300"
+          x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+          x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+          x-transition:leave="ease-in duration-200"
+          x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
+          x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+          class="inline-block align-bottom bg-white dark:bg-gray-800 rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
+        >
+          <div class="bg-white dark:bg-gray-800 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+            <div class="flex items-center justify-between mb-4">
+              <h3
+                class="text-xl font-bold text-gray-900 dark:text-white"
+                x-text="selectedEvent?.title"
+              ></h3>
+              <button
+                @click="showEventModal = false"
+                class="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300 transition-colors"
+              >
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+
+            <div class="space-y-4">
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <p class="text-sm text-gray-500 dark:text-gray-400">날짜</p>
+                  <p
+                    class="text-base font-medium text-gray-900 dark:text-white"
+                    x-text="selectedEvent?.date"
+                  ></p>
+                </div>
+                <div x-show="selectedEvent?.time">
+                  <p class="text-sm text-gray-500 dark:text-gray-400">시간</p>
+                  <p
+                    class="text-base font-medium text-gray-900 dark:text-white"
+                    x-text="selectedEvent?.time"
+                  ></p>
+                </div>
+              </div>
+
+              <div>
+                <p class="text-sm text-gray-500 dark:text-gray-400">설명</p>
+                <p
+                  class="text-base text-gray-700 dark:text-gray-300"
+                  x-text="selectedEvent?.description"
+                ></p>
+              </div>
+
+              <div x-show="selectedEvent?.details">
+                <p class="text-sm text-gray-500 dark:text-gray-400">상세 정보</p>
+                <p
+                  class="text-base text-gray-700 dark:text-gray-300 whitespace-pre-line"
+                  x-text="selectedEvent?.details"
+                ></p>
+              </div>
+
+              <div x-show="selectedEvent?.stockCode">
+                <p class="text-sm text-gray-500 dark:text-gray-400">관련 종목</p>
+                <div class="flex items-center justify-between bg-gray-50 dark:bg-gray-700 rounded-lg p-3 mt-1">
+                  <div>
+                    <p class="text-base font-medium text-gray-900 dark:text-white">
+                      <span x-text="selectedEvent?.stockName"></span>
+                      <span
+                        class="text-sm text-gray-500 dark:text-gray-400 ml-1"
+                        x-text="`(${selectedEvent?.stockCode})`"
+                      ></span>
+                    </p>
+                    <p 
+                      x-show="selectedEvent?.currentPrice"
+                      class="text-sm text-gray-600 dark:text-gray-400"
+                      x-text="`현재가: ${selectedEvent?.currentPrice}원`"
+                    ></p>
+                  </div>
+                  <div class="flex space-x-2">
+                    <button
+                      @click="showStockDetail(selectedEvent)"
+                      class="text-primary-600 hover:text-primary-700 dark:text-primary-400 text-sm font-medium"
+                    >
+                      차트 보기
+                    </button>
+                    <button
+                      @click="explainStock(selectedEvent)"
+                      class="text-purple-600 hover:text-purple-700 dark:text-purple-400 text-sm font-medium"
+                    >
+                      <i class="fas fa-robot mr-1"></i>AI 분석
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div x-show="selectedEvent?.location">
+                <p class="text-sm text-gray-500 dark:text-gray-400">장소</p>
+                <p
+                  class="text-base text-gray-700 dark:text-gray-300"
+                  x-text="selectedEvent?.location"
+                ></p>
+              </div>
+
+              <div x-show="selectedEvent?.importance">
+                <p class="text-sm text-gray-500 dark:text-gray-400">중요도</p>
+                <div class="flex items-center mt-1">
+                  <span 
+                    class="px-2 py-1 text-xs font-medium rounded-full"
+                    :class="{
+                      'bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400': selectedEvent?.importance === 'high',
+                      'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-400': selectedEvent?.importance === 'medium',
+                      'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400': selectedEvent?.importance === 'low'
+                    }"
+                    x-text="selectedEvent?.importance === 'high' ? '높음' : selectedEvent?.importance === 'medium' ? '보통' : '낮음'"
+                  ></span>
+                </div>
+              </div>
+
+              <div class="pt-4 space-y-3">
+                <!-- AI 설명 버튼 -->
+                <button
+                  @click="explainEvent(selectedEvent)"
+                  class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:from-purple-700 hover:to-blue-700 transition-all"
+                >
+                  <i class="fas fa-robot mr-2"></i>AI로 자세히 알아보기
+                </button>
+                
+                <!-- 기존 버튼들 -->
+                <div class="flex space-x-3">
+                  <button
+                    @click="toggleBookmark(selectedEvent)"
+                    class="flex-1 bg-primary-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-primary-700 transition-colors"
+                  >
+                    <i class="fas fa-bookmark mr-2"></i>북마크
+                  </button>
+                  <button
+                    class="flex-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                  >
+                    <i class="fas fa-share-alt mr-2"></i>공유
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div
+      x-show="showLoginModal"
+      x-cloak
+      class="fixed inset-0 z-50 overflow-y-auto"
+      aria-labelledby="modal-title"
+      role="dialog"
+      aria-modal="true"
+    >
+      <div
+        class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0"
+      >
+        <div
+          x-show="showLoginModal"
+          x-transition:enter="ease-out duration-300"
+          x-transition:enter-start="opacity-0"
+          x-transition:enter-end="opacity-100"
+          x-transition:leave="ease-in duration-200"
+          x-transition:leave-start="opacity-100"
+          x-transition:leave-end="opacity-0"
+          class="fixed inset-0 bg-gray-500 dark:bg-gray-900 bg-opacity-75 dark:bg-opacity-75 transition-opacity"
+          aria-hidden="true"
+          @click="showLoginModal = false"
+        ></div>
+
+        <div
+          x-show="showLoginModal"
+          x-transition:enter="ease-out duration-300"
+          x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+          x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+          x-transition:leave="ease-in duration-200"
+          x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
+          x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+          class="inline-block align-bottom bg-white dark:bg-gray-800 rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-md sm:w-full"
+        >
+          <div class="bg-white dark:bg-gray-800 px-4 pt-5 pb-4 sm:p-6">
+            <div class="text-center mb-6">
+              <i class="fas fa-chart-line text-primary-600 text-4xl mb-4"></i>
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white">
+                InvestCalendar 로그인
+              </h3>
+              <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">
+                스마트한 투자 일정 관리를 시작하세요
+              </p>
+            </div>
+
+            <form @submit.prevent="login()" class="space-y-4">
+              <div>
+                <label
+                  class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                  >이메일 또는 사용자명</label
+                >
+                <input
+                  type="text"
+                  x-model="loginForm.username"
+                  class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white"
+                  placeholder="your@email.com"
+                  required
+                />
+              </div>
+
+              <div>
+                <label
+                  class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                  >비밀번호</label
+                >
+                <input
+                  type="password"
+                  x-model="loginForm.password"
+                  class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white"
+                  placeholder="••••••••"
+                  required
+                />
+              </div>
+
+              <div class="flex items-center justify-between">
+                <label class="flex items-center">
+                  <input
+                    type="checkbox"
+                    class="rounded border-gray-300 dark:border-gray-600 text-primary-600 focus:ring-primary-500 dark:bg-gray-700"
+                  />
+                  <span class="ml-2 text-sm text-gray-700 dark:text-gray-300"
+                    >로그인 유지</span
+                  >
+                </label>
+                <a
+                  href="#"
+                  class="text-sm text-primary-600 hover:text-primary-500 dark:text-primary-400 dark:hover:text-primary-300"
+                  >비밀번호 찾기</a
+                >
+              </div>
+
+              <button
+                type="submit"
+                :disabled="isLoading"
+                class="w-full bg-primary-600 text-white py-2 rounded-lg font-medium hover:bg-primary-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <span x-show="!isLoading">로그인</span>
+                <span
+                  x-show="isLoading"
+                  class="flex items-center justify-center"
+                >
+                  <div class="loading-spinner w-5 h-5 mr-2"></div>
+                  로그인 중...
+                </span>
+              </button>
+
+              <div class="relative">
+                <div class="absolute inset-0 flex items-center">
+                  <div
+                    class="w-full border-t border-gray-300 dark:border-gray-600"
+                  ></div>
+                </div>
+                <div class="relative flex justify-center text-sm">
+                  <span
+                    class="px-2 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400"
+                    >또는</span
+                  >
+                </div>
+              </div>
+
+              <button
+                type="button"
+                class="w-full bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 py-2 rounded-lg font-medium hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors flex items-center justify-center"
+              >
+                <img
+                  src="https://www.google.com/favicon.ico"
+                  class="w-5 h-5 mr-2"
+                />
+                Google로 계속하기
+              </button>
+
+              <p class="text-center text-sm text-gray-500 dark:text-gray-400">
+                계정이 없으신가요?
+                <button
+                  type="button"
+                  @click="showLoginModal = false; showSignupModal = true"
+                  class="text-primary-600 hover:text-primary-500 dark:text-primary-400 dark:hover:text-primary-300 font-medium"
+                >
+                  회원가입
+                </button>
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div
+      x-show="showSignupModal"
+      x-cloak
+      class="fixed inset-0 z-50 overflow-y-auto"
+      aria-labelledby="modal-title"
+      role="dialog"
+      aria-modal="true"
+    >
+      <div
+        class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0"
+      >
+        <div
+          x-show="showSignupModal"
+          x-transition:enter="ease-out duration-300"
+          x-transition:enter-start="opacity-0"
+          x-transition:enter-end="opacity-100"
+          x-transition:leave="ease-in duration-200"
+          x-transition:leave-start="opacity-100"
+          x-transition:leave-end="opacity-0"
+          class="fixed inset-0 bg-gray-500 dark:bg-gray-900 bg-opacity-75 dark:bg-opacity-75 transition-opacity"
+          aria-hidden="true"
+          @click="showSignupModal = false"
+        ></div>
+
+        <div
+          x-show="showSignupModal"
+          x-transition:enter="ease-out duration-300"
+          x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+          x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+          x-transition:leave="ease-in duration-200"
+          x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
+          x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+          class="inline-block align-bottom bg-white dark:bg-gray-800 rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-md sm:w-full"
+        >
+          <div class="bg-white dark:bg-gray-800 px-4 pt-5 pb-4 sm:p-6">
+            <div class="text-center mb-6">
+              <i class="fas fa-user-plus text-primary-600 text-4xl mb-4"></i>
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white">
+                회원가입
+              </h3>
+              <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">
+                InvestCalendar와 함께 시작하세요
+              </p>
+            </div>
+
+            <form @submit.prevent="signup()" class="space-y-4">
+              <div>
+                <label
+                  class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                  >이메일</label
+                >
+                <input
+                  type="email"
+                  x-model="signupForm.email"
+                  class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white"
+                  placeholder="your@email.com"
+                  required
+                />
+              </div>
+
+              <div>
+                <label
+                  class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                  >사용자명</label
+                >
+                <input
+                  type="text"
+                  x-model="signupForm.username"
+                  class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white"
+                  placeholder="username"
+                  required
+                />
+              </div>
+
+              <div>
+                <label
+                  class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                  >이름</label
+                >
+                <input
+                  type="text"
+                  x-model="signupForm.full_name"
+                  class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white"
+                  placeholder="홍길동"
+                />
+              </div>
+
+              <div>
+                <label
+                  class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                  >비밀번호</label
+                >
+                <input
+                  type="password"
+                  x-model="signupForm.password"
+                  class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white"
+                  placeholder="••••••••"
+                  required
+                />
+              </div>
+
+              <button
+                type="submit"
+                :disabled="isLoading"
+                class="w-full bg-primary-600 text-white py-2 rounded-lg font-medium hover:bg-primary-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <span x-show="!isLoading">가입하기</span>
+                <span
+                  x-show="isLoading"
+                  class="flex items-center justify-center"
+                >
+                  <div class="loading-spinner w-5 h-5 mr-2"></div>
+                  가입 중...
+                </span>
+              </button>
+
+              <p class="text-center text-sm text-gray-500 dark:text-gray-400">
+                이미 계정이 있으신가요?
+                <button
+                  type="button"
+                  @click="showSignupModal = false; showLoginModal = true"
+                  class="text-primary-600 hover:text-primary-500 dark:text-primary-400 dark:hover:text-primary-300 font-medium"
+                >
+                  로그인
+                </button>
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI Explanation Modal -->
+    <div
+      x-show="showAiExplanationModal"
+      x-cloak
+      class="fixed inset-0 z-50 overflow-y-auto"
+      aria-labelledby="ai-modal-title"
+      role="dialog"
+      aria-modal="true"
+    >
+      <div
+        class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0"
+      >
+        <div
+          x-show="showAiExplanationModal"
+          x-transition:enter="ease-out duration-300"
+          x-transition:enter-start="opacity-0"
+          x-transition:enter-end="opacity-100"
+          x-transition:leave="ease-in duration-200"
+          x-transition:leave-start="opacity-100"
+          x-transition:leave-end="opacity-0"
+          class="fixed inset-0 bg-gray-500 dark:bg-gray-900 bg-opacity-75 dark:bg-opacity-75 transition-opacity"
+          aria-hidden="true"
+          @click="showAiExplanationModal = false"
+        ></div>
+
+        <div
+          x-show="showAiExplanationModal"
+          x-transition:enter="ease-out duration-300"
+          x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+          x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+          x-transition:leave="ease-in duration-200"
+          x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
+          x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+          class="inline-block align-bottom bg-white dark:bg-gray-800 rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full"
+        >
+          <div class="bg-white dark:bg-gray-800 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex items-center space-x-3">
+                <div class="flex-shrink-0">
+                  <div class="w-10 h-10 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full flex items-center justify-center">
+                    <i class="fas fa-robot text-white text-lg"></i>
+                  </div>
+                </div>
+                <div>
+                  <h3 class="text-lg font-bold text-gray-900 dark:text-white">
+                    AI 투자 도우미
+                  </h3>
+                  <p class="text-sm text-gray-500 dark:text-gray-400">
+                    Perplexity AI가 실시간으로 설명해드립니다
+                  </p>
+                </div>
+              </div>
+              <button
+                @click="showAiExplanationModal = false"
+                class="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300 transition-colors"
+              >
+                <i class="fas fa-times text-xl"></i>
+              </button>
+            </div>
+
+            <div class="space-y-4">
+              <!-- 질문/주제 -->
+              <div x-show="aiExplanation?.term || aiExplanation?.event || aiExplanation?.stock_name">
+                <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+                  <h4 class="font-semibold text-gray-900 dark:text-white mb-2">
+                    <i class="fas fa-question-circle text-blue-600 dark:text-blue-400 mr-2"></i>
+                    질문
+                  </h4>
+                  <p class="text-gray-700 dark:text-gray-300" x-text="aiExplanation?.term || aiExplanation?.event || aiExplanation?.stock_name || ''"></p>
+                </div>
+              </div>
+
+              <!-- AI 답변 -->
+              <div>
+                <div class="bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 rounded-lg p-4">
+                  <h4 class="font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
+                    <i class="fas fa-brain text-purple-600 dark:text-purple-400 mr-2"></i>
+                    AI 설명
+                  </h4>
+                  <div x-show="isLoading" class="flex items-center justify-center py-8">
+                    <div class="loading-spinner mr-3"></div>
+                    <span class="text-gray-600 dark:text-gray-400">AI가 답변을 생성하고 있습니다...</span>
+                  </div>
+                  <div x-show="!isLoading && aiExplanation">
+                    <p class="text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-line" 
+                       x-text="aiExplanation?.explanation || aiExplanation?.analysis || '설명을 불러올 수 없습니다.'">
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 피드백 -->
+              <div class="pt-4 border-t border-gray-200 dark:border-gray-700">
+                <div class="flex items-center justify-between">
+                  <p class="text-xs text-gray-500 dark:text-gray-400">
+                    <i class="fas fa-info-circle mr-1"></i>
+                    이 설명이 도움되셨나요?
+                  </p>
+                  <div class="flex space-x-2">
+                    <button class="text-green-600 hover:text-green-700 dark:text-green-400 text-sm">
+                      <i class="fas fa-thumbs-up mr-1"></i>도움됨
+                    </button>
+                    <button class="text-red-600 hover:text-red-700 dark:text-red-400 text-sm">
+                      <i class="fas fa-thumbs-down mr-1"></i>아니오
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 닫기 버튼 -->
+              <div class="pt-4">
+                <button
+                  @click="showAiExplanationModal = false"
+                  class="w-full bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-4 py-2 rounded-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                >
+                  닫기
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function calendarApp() {
+        return {
+          // Dark mode
+          darkMode: localStorage.getItem("darkMode") === "true",
+
+          // Navigation
+          activeTab: "calendar",
+
+          // User
+          user: null,
+
+          // Modals
+          showEventModal: false,
+          showLoginModal: false,
+          showSignupModal: false,
+          showAddWatchlistModal: false,
+          showAiExplanationModal: false,
+
+          // Loading
+          isLoading: false,
+
+          // AI Features
+          dailyMarketSummary: null,
+          aiExplanation: null,
+
+          // Today's events and upcoming events
+          todayStats: {
+            earnings: 0,
+            dividend: 0,
+            economic: 0,
+            ipo: 0,
+            holiday: 0
+          },
+          upcomingEvents: [],
+
+          // Calendar
+          calendar: null,
+          selectedEvent: null,
+          selectedEventTypes: [
+            "earnings",
+            "dividend",
+            "disclosure",
+            "holiday",
+            "economic",
+          ],
+          bookmarkedOnly: false,
+          eventTypes: [
+            { id: "earnings", name: "실적발표", color: "#10b981" },
+            { id: "dividend", name: "배당", color: "#f59e0b" },
+            { id: "disclosure", name: "공시", color: "#3b82f6" },
+            { id: "holiday", name: "휴장일", color: "#ef4444" },
+            { id: "ipo", name: "IPO", color: "#8b5cf6" },
+            { id: "meeting", name: "주주총회", color: "#ec4899" },
+            { id: "economic", name: "경제지표", color: "#14b8a6" },
+            { id: "personal", name: "개인일정", color: "#6b7280" },
+          ],
+
+          // Market data
+          marketIndices: {
+            kospi: null,
+            kosdaq: null,
+          },
+          programTrades: [],
+
+          // Global data
+          globalData: {
+            us_stocks: [],
+            cryptocurrencies: [],
+            exchange_rates: []
+          },
+          lastGlobalUpdate: null,
+
+          // Search
+          searchQuery: "",
+          searchResults: [],
+
+          // Watchlist
+          watchlist: [],
+
+          // Forms
+          loginForm: {
+            username: "",
+            password: "",
+          },
+          signupForm: {
+            email: "",
+            username: "",
+            full_name: "",
+            password: "",
+          },
+
+          // Chart
+          stockChart: null,
+
+          init() {
+            // Dark mode persistence
+            this.$watch("darkMode", (value) => {
+              localStorage.setItem("darkMode", value);
+              // HTML 클래스에도 적용
+              if (value) {
+                document.documentElement.classList.add('dark');
+              } else {
+                document.documentElement.classList.remove('dark');
+              }
+            });
+
+            // 초기 다크모드 상태 적용
+            if (this.darkMode) {
+              document.documentElement.classList.add('dark');
+            }
+
+            // Initialize components
+            this.initCalendar();
+            this.loadMarketData();
+            this.loadEvents();
+            this.loadGlobalData();
+            this.loadDailyMarketSummary();
+            this.checkAuth();
+
+            // Update market data every 30 seconds
+            setInterval(() => {
+              if (
+                this.activeTab === "market" ||
+                this.activeTab === "calendar"
+              ) {
+                this.loadMarketData();
+              }
+              
+              if (this.activeTab === "global") {
+                this.loadGlobalData();
+              }
+            }, 30000);
+
+            // Watch for filter changes to reload events
+            this.$watch('selectedEventTypes', () => {
+              this.loadEvents();
+            });
+
+            this.$watch('bookmarkedOnly', () => {
+              this.loadEvents();
+            });
+          },
+
+          initCalendar() {
+            const calendarEl = document.getElementById("calendar");
+            this.calendar = new FullCalendar.Calendar(calendarEl, {
+              initialView: "dayGridMonth",
+              locale: "ko",
+              height: "auto",
+              headerToolbar: {
+                left: "prev,next today",
+                center: "title",
+                right: "dayGridMonth,dayGridWeek,dayGridDay",
+              },
+              buttonText: {
+                today: "오늘",
+                month: "월",
+                week: "주",
+                day: "일",
+              },
+              eventClick: (info) => {
+                this.selectedEvent = {
+                  id: info.event.id,
+                  title: info.event.title,
+                  date: info.event.start.toLocaleDateString("ko-KR"),
+                  description: info.event.extendedProps.description,
+                  stockCode: info.event.extendedProps.stockCode,
+                  stockName: info.event.extendedProps.stockName,
+                  eventType: info.event.extendedProps.eventType,
+                  importance: info.event.extendedProps.importance,
+                  details: info.event.extendedProps.details,
+                  time: info.event.extendedProps.time,
+                  location: info.event.extendedProps.location,
+                  currentPrice: info.event.extendedProps.currentPrice,
+                  isBookmarked: info.event.extendedProps.isBookmarked,
+                };
+                this.showEventModal = true;
+              },
+              events: [],
+            });
+            this.calendar.render();
+          },
+
+          async loadEvents() {
+            try {
+              const startDate = new Date();
+              startDate.setMonth(startDate.getMonth() - 1);
+              const endDate = new Date();
+              endDate.setMonth(endDate.getMonth() + 3);
+
+              const params = new URLSearchParams({
+                start_date: startDate.toISOString().split('T')[0],
+                end_date: endDate.toISOString().split('T')[0]
+              });
+
+              const response = await fetch(
+                `/api/v1/stocks/calendar-events?${params}`
+              );
+              
+              if (response.ok) {
+                const events = await response.json();
+                
+                // 필터링된 이벤트만 표시
+                const filteredEvents = events.filter(event => {
+                  const eventType = event.extendedProps?.eventType;
+                  return this.selectedEventTypes.includes(eventType);
+                });
+
+                this.calendar.removeAllEvents();
+                this.calendar.addEventSource(filteredEvents);
+                
+                // 통계 업데이트
+                this.updateEventStats(filteredEvents);
+              } else {
+                console.error("이벤트 로드 실패:", response.status);
+              }
+            } catch (error) {
+              console.error("이벤트 로드 실패:", error);
+            }
+          },
+
+          async loadMarketData() {
+            try {
+              // Load market indices
+              const indicesResponse = await fetch(
+                "/api/v1/stocks/market-index"
+              );
+              if (indicesResponse.ok) {
+                const indices = await indicesResponse.json();
+                indices.forEach((index) => {
+                  if (index.index_name === "KOSPI") {
+                    this.marketIndices.kospi = {
+                      current_value: index.current_value,
+                      change_rate: index.change_rate
+                    };
+                  } else if (index.index_name === "KOSDAQ") {
+                    this.marketIndices.kosdaq = {
+                      current_value: index.current_value, 
+                      change_rate: index.change_rate
+                    };
+                  }
+                });
+              }
+
+              // Load program trades
+              const tradesResponse = await fetch(
+                "/api/v1/stocks/program-trade"
+              );
+              if (tradesResponse.ok) {
+                this.programTrades = await tradesResponse.json();
+              }
+            } catch (error) {
+              console.error("시장 데이터 로드 실패:", error);
+            }
+          },
+
+          async searchStocks() {
+            if (this.searchQuery.length < 2) {
+              this.searchResults = [];
+              return;
+            }
+
+            try {
+              const response = await fetch(
+                `/api/v1/stocks/search?keyword=${encodeURIComponent(
+                  this.searchQuery
+                )}`
+              );
+              if (response.ok) {
+                this.searchResults = await response.json();
+              }
+            } catch (error) {
+              console.error("종목 검색 실패:", error);
+            }
+          },
+
+          updateEventStats(events) {
+            // 오늘 날짜 기준으로 이벤트 통계 계산
+            const today = new Date().toISOString().split('T')[0];
+            const todayEvents = events.filter(event => event.start === today);
+            
+            // 이벤트 타입별 개수 계산
+            this.todayStats.earnings = todayEvents.filter(e => e.extendedProps?.eventType === 'earnings').length;
+            this.todayStats.dividend = todayEvents.filter(e => e.extendedProps?.eventType === 'dividend').length;
+            this.todayStats.economic = todayEvents.filter(e => e.extendedProps?.eventType === 'economic').length;
+            this.todayStats.ipo = todayEvents.filter(e => e.extendedProps?.eventType === 'ipo').length;
+            this.todayStats.holiday = todayEvents.filter(e => e.extendedProps?.eventType === 'holiday').length;
+            
+            // 다가오는 이벤트 업데이트 (다음 7일)
+            const nextWeek = new Date();
+            nextWeek.setDate(nextWeek.getDate() + 7);
+            const nextWeekStr = nextWeek.toISOString().split('T')[0];
+            
+            this.upcomingEvents = events
+              .filter(event => event.start > today && event.start <= nextWeekStr)
+              .sort((a, b) => new Date(a.start) - new Date(b.start))
+              .slice(0, 5);
+            
+            console.log(`오늘의 이벤트 - 실적발표: ${this.todayStats.earnings}, 배당: ${this.todayStats.dividend}, 경제지표: ${this.todayStats.economic}`);
+          },
+
+          formatEventDate(dateStr) {
+            const date = new Date(dateStr);
+            return date.toLocaleDateString('ko-KR', {
+              month: 'long',
+              day: 'numeric',
+              weekday: 'short'
+            });
+          },
+
+          selectUpcomingEvent(event) {
+            // 다가오는 이벤트 클릭 시 캘린더로 이동하고 이벤트 선택
+            this.activeTab = 'calendar';
+            this.selectedEvent = {
+              id: event.id,
+              title: event.title,
+              date: this.formatEventDate(event.start),
+              description: event.extendedProps?.description || '',
+              stockCode: event.extendedProps?.stockCode,
+              stockName: event.extendedProps?.stockName,
+              eventType: event.extendedProps?.eventType,
+              importance: event.extendedProps?.importance,
+              details: event.extendedProps?.details,
+              time: event.extendedProps?.time,
+              location: event.extendedProps?.location,
+              currentPrice: event.extendedProps?.currentPrice,
+              isBookmarked: event.extendedProps?.isBookmarked,
+            };
+            this.showEventModal = true;
+          },
+
+          async loadGlobalData() {
+            try {
+              const response = await fetch("/api/v1/stocks/global-markets");
+              if (response.ok) {
+                this.globalData = await response.json();
+                this.lastGlobalUpdate = new Date().toLocaleTimeString('ko-KR');
+                console.log('글로벌 데이터 업데이트:', this.globalData);
+              } else {
+                console.error("글로벌 데이터 로드 실패:", response.status);
+              }
+            } catch (error) {
+              console.error("글로벌 데이터 로드 실패:", error);
+            }
+          },
+
+          selectStock(stock) {
+            this.searchQuery = "";
+            this.searchResults = [];
+            // Navigate to stock detail or add to watchlist
+            if (this.activeTab === "watchlist") {
+              this.addToWatchlist(stock);
+            } else {
+              // Show stock detail
+              this.showStockDetail(stock);
+            }
+          },
+
+          async showStockDetail(stock) {
+            // Load stock price and show in modal or chart
+            try {
+              const response = await fetch(
+                `/api/v1/stocks/price/${stock.stock_code}`
+              );
+              if (response.ok) {
+                const priceData = await response.json();
+                // Update UI with price data
+                console.log(priceData);
+              }
+            } catch (error) {
+              console.error("주가 조회 실패:", error);
+            }
+          },
+
+          async checkAuth() {
+            const token = localStorage.getItem("access_token");
+            if (token) {
+              try {
+                const response = await fetch("/api/v1/users/me", {
+                  headers: {
+                    Authorization: `Bearer ${token}`,
+                  },
+                });
+                if (response.ok) {
+                  this.user = await response.json();
+                  this.loadWatchlist();
+                } else {
+                  localStorage.removeItem("access_token");
+                }
+              } catch (error) {
+                console.error("인증 확인 실패:", error);
+              }
+            }
+          },
+
+          async login() {
+            this.isLoading = true;
+            try {
+              const formData = new URLSearchParams();
+              formData.append("username", this.loginForm.username);
+              formData.append("password", this.loginForm.password);
+
+              const response = await fetch("/api/v1/auth/login", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/x-www-form-urlencoded",
+                },
+                body: formData,
+              });
+
+              if (response.ok) {
+                const data = await response.json();
+                localStorage.setItem("access_token", data.access_token);
+                await this.checkAuth();
+                this.showLoginModal = false;
+                this.loginForm = { username: "", password: "" };
+                this.loadEvents();
+                this.loadWatchlist();
+              } else {
+                const error = await response.json();
+                alert(error.detail || "로그인 실패");
+              }
+            } catch (error) {
+              console.error("로그인 오류:", error);
+              alert("로그인 중 오류가 발생했습니다.");
+            } finally {
+              this.isLoading = false;
+            }
+          },
+
+          async signup() {
+            this.isLoading = true;
+            try {
+              const response = await fetch("/api/v1/auth/signup", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(this.signupForm),
+              });
+
+              if (response.ok) {
+                alert("회원가입이 완료되었습니다. 로그인해주세요.");
+                this.showSignupModal = false;
+                this.showLoginModal = true;
+                this.signupForm = {
+                  email: "",
+                  username: "",
+                  full_name: "",
+                  password: "",
+                };
+              } else {
+                const error = await response.json();
+                alert(error.detail || "회원가입 실패");
+              }
+            } catch (error) {
+              console.error("회원가입 오류:", error);
+              alert("회원가입 중 오류가 발생했습니다.");
+            } finally {
+              this.isLoading = false;
+            }
+          },
+
+          logout() {
+            localStorage.removeItem("access_token");
+            this.user = null;
+            this.watchlist = [];
+            this.loadEvents();
+          },
+
+          async loadWatchlist() {
+            if (!this.user) return;
+
+            try {
+              const response = await fetch("/api/v1/watchlist", {
+                headers: this.getAuthHeaders(),
+              });
+              if (response.ok) {
+                this.watchlist = await response.json();
+              }
+            } catch (error) {
+              console.error("관심종목 로드 실패:", error);
+            }
+          },
+
+          async addToWatchlist(stock) {
+            if (!this.user) {
+              this.showLoginModal = true;
+              return;
+            }
+
+            try {
+              const response = await fetch("/api/v1/watchlist", {
+                method: "POST",
+                headers: {
+                  ...this.getAuthHeaders(),
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  stock_code: stock.stock_code,
+                  stock_name: stock.stock_name,
+                }),
+              });
+
+              if (response.ok) {
+                await this.loadWatchlist();
+                alert("관심종목에 추가되었습니다.");
+              } else {
+                const error = await response.json();
+                alert(error.detail || "관심종목 추가 실패");
+              }
+            } catch (error) {
+              console.error("관심종목 추가 실패:", error);
+            }
+          },
+
+          async removeFromWatchlist(itemId) {
+            if (confirm("관심종목에서 삭제하시겠습니까?")) {
+              try {
+                const response = await fetch(`/api/v1/watchlist/${itemId}`, {
+                  method: "DELETE",
+                  headers: this.getAuthHeaders(),
+                });
+
+                if (response.ok) {
+                  await this.loadWatchlist();
+                }
+              } catch (error) {
+                console.error("관심종목 삭제 실패:", error);
+              }
+            }
+          },
+
+          async toggleBookmark(event) {
+            if (!this.user) {
+              this.showLoginModal = true;
+              return;
+            }
+
+            try {
+              if (event.isBookmarked) {
+                // Remove bookmark
+                // Need to implement bookmark removal
+              } else {
+                // Add bookmark
+                const response = await fetch("/api/v1/bookmarks", {
+                  method: "POST",
+                  headers: {
+                    ...this.getAuthHeaders(),
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify({
+                    event_id: event.id,
+                  }),
+                });
+
+                if (response.ok) {
+                  event.isBookmarked = true;
+                  this.loadEvents();
+                }
+              }
+            } catch (error) {
+              console.error("북마크 토글 실패:", error);
+            }
+          },
+
+          async loadDailyMarketSummary() {
+            try {
+              const response = await fetch("/api/v1/stocks/daily-market-summary");
+              if (response.ok) {
+                this.dailyMarketSummary = await response.json();
+              } else {
+                console.error("시장 요약 로드 실패:", response.status);
+              }
+            } catch (error) {
+              console.error("시장 요약 로드 실패:", error);
+            }
+          },
+
+          async explainEvent(event) {
+            if (!event) return;
+            
+            this.isLoading = true;
+            try {
+              const response = await fetch("/api/v1/stocks/ai-explain/event", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/x-www-form-urlencoded",
+                },
+                body: new URLSearchParams({
+                  event_title: event.title || "",
+                  event_details: event.details || ""
+                })
+              });
+              
+              if (response.ok) {
+                this.aiExplanation = await response.json();
+                this.showAiExplanationModal = true;
+              } else {
+                alert("AI 설명을 가져올 수 없습니다.");
+              }
+            } catch (error) {
+              console.error("AI 설명 실패:", error);
+              alert("AI 설명 중 오류가 발생했습니다.");
+            } finally {
+              this.isLoading = false;
+            }
+          },
+
+          async explainStock(event) {
+            if (!event || !event.stockCode) return;
+            
+            this.isLoading = true;
+            try {
+              const response = await fetch(`/api/v1/stocks/ai-explain/stock/${event.stockCode}?stock_name=${encodeURIComponent(event.stockName || '')}&current_price=${encodeURIComponent(event.currentPrice || '0')}`);
+              
+              if (response.ok) {
+                this.aiExplanation = await response.json();
+                this.showAiExplanationModal = true;
+              } else {
+                alert("AI 분석을 가져올 수 없습니다.");
+              }
+            } catch (error) {
+              console.error("AI 분석 실패:", error);
+              alert("AI 분석 중 오류가 발생했습니다.");
+            } finally {
+              this.isLoading = false;
+            }
+          },
+
+          async explainTerm(term, context = "") {
+            this.isLoading = true;
+            try {
+              const response = await fetch("/api/v1/stocks/ai-explain/term", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/x-www-form-urlencoded",
+                },
+                body: new URLSearchParams({
+                  term: term,
+                  context: context
+                })
+              });
+              
+              if (response.ok) {
+                this.aiExplanation = await response.json();
+                this.showAiExplanationModal = true;
+              } else {
+                alert("AI 설명을 가져올 수 없습니다.");
+              }
+            } catch (error) {
+              console.error("AI 설명 실패:", error);
+              alert("AI 설명 중 오류가 발생했습니다.");
+            } finally {
+              this.isLoading = false;
+            }
+          },
+
+          async explainCrypto(crypto) {
+            this.isLoading = true;
+            try {
+              const response = await fetch("/api/v1/stocks/ai-explain/term", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/x-www-form-urlencoded",
+                },
+                body: new URLSearchParams({
+                  term: `${crypto.symbol} 가상화폐`,
+                  context: `현재가: ${crypto.price.toLocaleString()}원, 변동률: ${crypto.change_rate.toFixed(2)}%`
+                })
+              });
+              
+              if (response.ok) {
+                this.aiExplanation = await response.json();
+                this.showAiExplanationModal = true;
+              } else {
+                alert("AI 설명을 가져올 수 없습니다.");
+              }
+            } catch (error) {
+              console.error("가상화폐 설명 실패:", error);
+              alert("가상화폐 설명 중 오류가 발생했습니다.");
+            } finally {
+              this.isLoading = false;
+            }
+          },
+
+          getAuthHeaders() {
+            const token = localStorage.getItem("access_token");
+            return token ? { Authorization: `Bearer ${token}` } : {};
+          },
+        };
+      }
+    </script>
+  </body>
+</html>
