@@ -8,6 +8,7 @@ from app.db.session import get_db
 from app.db import models
 from app.services.kis_api import kis_api_client
 from app.services.perplexity_api import perplexity_client
+from app.services.dart_api import dart_api_client
 from app.api.deps import get_current_user_optional
 from app.schemas.stocks import (
     StockPriceResponse,
@@ -15,7 +16,10 @@ from app.schemas.stocks import (
     MarketIndexResponse,
     InvestorTrendResponse,
     ProgramTradeResponse,
-    StockSearchResponse
+    StockSearchResponse,
+    DisclosureResponse,
+    CompanyInfoResponse,
+    DisclosureListResponse
 )
 
 router = APIRouter()
@@ -591,4 +595,121 @@ async def get_daily_market_summary():
         summary = await perplexity_client.get_daily_market_summary()
         return summary
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"시장 요약 조회 중 오류: {str(e)}") 
+        raise HTTPException(status_code=500, detail=f"시장 요약 조회 중 오류: {str(e)}")
+
+# ==================== DART API 엔드포인트 ====================
+
+@router.get("/disclosures", response_model=DisclosureListResponse)
+async def get_disclosures(
+    corp_code: str = Query(None, description="고유번호(8자리)"),
+    corp_cls: str = Query("Y", description="법인구분 (Y:유가, K:코스닥, N:코넥스, E:기타)"),
+    days: int = Query(7, description="조회 기간(일)", ge=1, le=30),
+    page_no: int = Query(1, description="페이지 번호", ge=1),
+    page_count: int = Query(10, description="페이지당 건수", ge=1, le=100)
+):
+    """공시정보 조회"""
+    try:
+        from datetime import datetime, timedelta
+        
+        end_date = datetime.now()
+        start_date = end_date - timedelta(days=days)
+        
+        result = await dart_api_client.get_disclosure_list(
+            corp_code=corp_code,
+            bgn_de=start_date.strftime("%Y%m%d"),
+            end_de=end_date.strftime("%Y%m%d"),
+            corp_cls=corp_cls,
+            page_no=page_no,
+            page_count=page_count
+        )
+        
+        if result["success"]:
+            return DisclosureListResponse(
+                success=True,
+                data=[DisclosureResponse(**item) for item in result["data"]],
+                page_info=result.get("page_info")
+            )
+        else:
+            return DisclosureListResponse(
+                success=False,
+                error=result.get("error", "공시정보 조회 실패")
+            )
+            
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"공시정보 조회 중 오류: {str(e)}")
+
+@router.get("/company/{corp_code}", response_model=CompanyInfoResponse)
+async def get_company_info(corp_code: str):
+    """기업개황 조회"""
+    try:
+        result = await dart_api_client.get_company_info(corp_code)
+        
+        if result["success"]:
+            return CompanyInfoResponse(**result["data"])
+        else:
+            raise HTTPException(
+                status_code=404, 
+                detail=result.get("error", "기업 정보를 찾을 수 없습니다.")
+            )
+            
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"기업개황 조회 중 오류: {str(e)}")
+
+@router.get("/recent-disclosures")
+async def get_recent_disclosures(
+    corp_cls: str = Query("Y", description="법인구분 (Y:유가, K:코스닥)"),
+    days: int = Query(7, description="조회 기간(일)", ge=1, le=30),
+    important_only: bool = Query(True, description="중요 공시만 조회")
+):
+    """최근 중요 공시 조회 (캘린더 이벤트용)"""
+    try:
+        disclosures = await dart_api_client.get_recent_disclosures(
+            corp_cls=corp_cls,
+            days=days,
+            important_only=important_only
+        )
+        
+        return {
+            "success": True,
+            "count": len(disclosures),
+            "data": disclosures
+        }
+        
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"최근 공시 조회 중 오류: {str(e)}")
+
+@router.get("/search-company")
+async def search_company(
+    company_name: str = Query(..., description="회사명 (부분 검색 가능)")
+):
+    """회사명으로 기업 검색"""
+    try:
+        companies = await dart_api_client.search_company_by_name(company_name)
+        
+        return {
+            "success": True,
+            "count": len(companies),
+            "data": companies
+        }
+        
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"기업 검색 중 오류: {str(e)}")
+
+@router.get("/disclosure/{rcept_no}")
+async def get_disclosure_detail(rcept_no: str):
+    """공시 상세 조회 (DART 뷰어 링크 제공)"""
+    try:
+        # DART 공시뷰어 링크 생성
+        dart_viewer_url = f"https://dart.fss.or.kr/dsaf001/main.do?rcpNo={rcept_no}"
+        
+        return {
+            "success": True,
+            "rcept_no": rcept_no,
+            "dart_viewer_url": dart_viewer_url,
+            "message": "공시 상세 내용은 DART 뷰어에서 확인할 수 있습니다."
+        }
+        
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"공시 상세 조회 중 오류: {str(e)}") 

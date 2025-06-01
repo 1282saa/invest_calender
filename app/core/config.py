@@ -33,6 +33,12 @@ class Settings(BaseSettings):
     KIS_API_BASE_URL: str = os.getenv("KIS_API_BASE_URL", "https://openapi.koreainvestment.com:9443")
     KIS_ENV: str = os.getenv("KIS_ENV", "vts")  # vts: 모의투자, prod: 실전투자
     
+    # Perplexity AI API 설정
+    PERPLEXITY_API_KEY: str = os.getenv("PERPLEXITY_API_KEY", "")
+    
+    # DART(전자공시시스템) API 설정
+    DART_API_KEY: str = os.getenv("DART_API_KEY", "")
+    
     # CORS 설정
     CORS_ORIGINS: list = ["*"]
     

@@ -6,12 +6,13 @@ import aiohttp
 import asyncio
 from typing import Dict, Any, Optional
 import logging
+from app.core.config import settings
 
 logger = logging.getLogger(__name__)
 
 class PerplexityAPIClient:
-    def __init__(self, api_key: str = "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"):
-        self.api_key = api_key
+    def __init__(self, api_key: str = None):
+        self.api_key = api_key or settings.PERPLEXITY_API_KEY
         self.base_url = "https://api.perplexity.ai"
         self.headers = {
             "Authorization": f"Bearer {self.api_key}",

@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from datetime import datetime
-from typing import Optional
+from typing import Optional, List, Dict, Any
 
 class StockPriceResponse(BaseModel):
     """주식 현재가 응답"""
@@ -100,4 +100,39 @@ class WatchlistItemResponse(BaseModel):
     updated_at: datetime
     
     class Config:
-        from_attributes = True 
+        from_attributes = True
+
+class DisclosureResponse(BaseModel):
+    """공시정보 응답"""
+    corp_name: str
+    corp_code: str
+    stock_code: Optional[str] = None
+    report_nm: str
+    rcept_no: str
+    flr_nm: str
+    rcept_dt: str
+    rm: Optional[str] = None
+    corp_cls: str
+
+class CompanyInfoResponse(BaseModel):
+    """기업개황 응답"""
+    corp_name: str
+    corp_name_eng: Optional[str] = None
+    stock_name: str
+    stock_code: Optional[str] = None
+    ceo_nm: str
+    corp_cls: str
+    adres: str
+    hm_url: Optional[str] = None
+    ir_url: Optional[str] = None
+    phn_no: Optional[str] = None
+    induty_code: str
+    est_dt: str
+    acc_mt: str
+
+class DisclosureListResponse(BaseModel):
+    """공시목록 응답"""
+    success: bool
+    data: List[DisclosureResponse] = []
+    page_info: Optional[Dict[str, Any]] = None
+    error: Optional[str] = None 

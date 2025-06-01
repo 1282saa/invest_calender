@@ -256,6 +256,15 @@
               </a>
               <a
                 href="#"
+                @click="activeTab = 'disclosures'"
+                :class="activeTab === 'disclosures' ? 'border-primary-500 text-primary-600 dark:text-primary-400' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 dark:text-gray-300 dark:hover:text-white'"
+                class="inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors"
+              >
+                <i class="fas fa-file-alt mr-2"></i>
+                공시정보
+              </a>
+              <a
+                href="#"
                 @click="activeTab = 'analysis'"
                 :class="activeTab === 'analysis' ? 'border-primary-500 text-primary-600 dark:text-primary-400' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 dark:text-gray-300 dark:hover:text-white'"
                 class="inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors"
@@ -929,6 +938,122 @@
             <div class="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400">
               <span>실시간 데이터 (30초마다 자동 업데이트)</span>
               <span x-show="lastGlobalUpdate" x-text="'최종 업데이트: ' + lastGlobalUpdate"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 공시정보 Tab -->
+      <div x-show="activeTab === 'disclosures'" x-transition>
+        <div class="space-y-6">
+          <!-- 공시 검색 -->
+          <div class="glass rounded-xl p-6">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6">
+              🔍 공시 검색
+            </h3>
+            <div class="flex flex-col sm:flex-row gap-4 mb-6">
+              <div class="flex-1">
+                <input
+                  type="text"
+                  x-model="disclosureSearch.companyName"
+                  placeholder="회사명 검색 (예: 삼성전자)"
+                  class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                  @keyup.enter="searchDisclosures()"
+                />
+              </div>
+              <select 
+                x-model="disclosureSearch.corpCls"
+                class="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+              >
+                <option value="Y">유가증권</option>
+                <option value="K">코스닥</option>
+                <option value="N">코넥스</option>
+                <option value="">전체</option>
+              </select>
+              <select 
+                x-model="disclosureSearch.days"
+                class="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+              >
+                <option value="7">최근 7일</option>
+                <option value="14">최근 14일</option>
+                <option value="30">최근 30일</option>
+              </select>
+              <button
+                @click="searchDisclosures()"
+                class="btn-primary px-6 py-2 rounded-lg transition-all"
+                :disabled="disclosureLoading"
+              >
+                <i class="fas fa-search mr-2"></i>
+                <span x-show="!disclosureLoading">검색</span>
+                <span x-show="disclosureLoading">
+                  <i class="fas fa-spinner fa-spin mr-2"></i>검색중...
+                </span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 최근 중요 공시 -->
+          <div class="glass rounded-xl p-6">
+            <div class="flex justify-between items-center mb-6">
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white">
+                📄 최근 중요 공시
+              </h3>
+              <button
+                @click="loadRecentDisclosures()"
+                class="text-primary-600 hover:text-primary-700 dark:text-primary-400 text-sm"
+                :disabled="disclosureLoading"
+              >
+                <i class="fas fa-sync-alt mr-1" :class="{ 'fa-spin': disclosureLoading }"></i>
+                새로고침
+              </button>
+            </div>
+            
+            <div x-show="disclosures && disclosures.length > 0" class="space-y-4">
+              <template x-for="disclosure in disclosures" :key="disclosure.rcept_no">
+                <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:shadow-lg transition-all cursor-pointer bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20"
+                     @click="viewDisclosureDetail(disclosure)">
+                  <div class="flex justify-between items-start mb-2">
+                    <div class="flex-1">
+                      <h4 class="font-semibold text-gray-900 dark:text-white text-lg mb-1" x-text="disclosure.corp_name"></h4>
+                      <p class="text-sm text-gray-600 dark:text-gray-300 mb-2" x-text="disclosure.report_nm"></p>
+                      <div class="flex items-center space-x-4 text-xs text-gray-500 dark:text-gray-400">
+                        <span x-text="'접수일: ' + disclosure.rcept_dt.replace(/(\d{4})(\d{2})(\d{2})/, '$1-$2-$3')"></span>
+                        <span x-text="'제출인: ' + disclosure.flr_nm"></span>
+                        <span x-show="disclosure.stock_code" class="bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300 px-2 py-1 rounded" x-text="disclosure.stock_code"></span>
+                        <span class="bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 px-2 py-1 rounded" x-text="disclosure.corp_cls === 'Y' ? '유가' : disclosure.corp_cls === 'K' ? '코스닥' : '기타'"></span>
+                      </div>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                      <button
+                        @click.stop="explainDisclosure(disclosure)"
+                        class="text-purple-600 hover:text-purple-700 dark:text-purple-400 p-2 rounded hover:bg-purple-100 dark:hover:bg-purple-900/50 transition-colors"
+                        title="AI 설명"
+                      >
+                        <i class="fas fa-robot"></i>
+                      </button>
+                      <i class="fas fa-external-link-alt text-gray-400"></i>
+                    </div>
+                  </div>
+                </div>
+              </template>
+            </div>
+            
+            <div x-show="!disclosures || disclosures.length === 0" class="text-center py-8">
+              <div x-show="disclosureLoading" class="text-gray-500 dark:text-gray-400">
+                <i class="fas fa-spinner fa-spin mr-2"></i>
+                공시정보를 불러오는 중...
+              </div>
+              <div x-show="!disclosureLoading" class="text-gray-500 dark:text-gray-400">
+                공시정보가 없습니다.
+              </div>
+            </div>
+          </div>
+
+          <!-- 실시간 업데이트 정보 -->
+          <div class="glass rounded-xl p-4">
+            <div class="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400">
+              <span>DART 전자공시시스템 연동 (실시간 업데이트)</span>
+              <span x-show="lastDisclosureUpdate" x-text="'최종 업데이트: ' + lastDisclosureUpdate"></span>
             </div>
           </div>
         </div>
@@ -1646,6 +1771,16 @@
           // Watchlist
           watchlist: [],
 
+          // DART 공시정보
+          disclosures: [],
+          disclosureLoading: false,
+          disclosureSearch: {
+            companyName: '',
+            corpCls: 'Y',
+            days: 7
+          },
+          lastDisclosureUpdate: null,
+
           // Forms
           loginForm: {
             username: "",
@@ -1684,6 +1819,7 @@
             this.loadEvents();
             this.loadGlobalData();
             this.loadDailyMarketSummary();
+            this.loadRecentDisclosures();
             this.checkAuth();
 
             // Update market data every 30 seconds
@@ -2248,6 +2384,124 @@
             } catch (error) {
               console.error("가상화폐 설명 실패:", error);
               alert("가상화폐 설명 중 오류가 발생했습니다.");
+            } finally {
+              this.isLoading = false;
+            }
+          },
+
+          // ==================== DART 공시정보 함수들 ====================
+
+          async loadRecentDisclosures() {
+            this.disclosureLoading = true;
+            try {
+              const response = await fetch(
+                `/api/v1/stocks/recent-disclosures?corp_cls=${this.disclosureSearch.corpCls}&days=${this.disclosureSearch.days}&important_only=true`
+              );
+              
+              if (response.ok) {
+                const result = await response.json();
+                this.disclosures = result.data || [];
+                this.lastDisclosureUpdate = new Date().toLocaleTimeString();
+              } else {
+                console.error("공시정보 로딩 실패:", response.status);
+              }
+            } catch (error) {
+              console.error("공시정보 로딩 오류:", error);
+            } finally {
+              this.disclosureLoading = false;
+            }
+          },
+
+          async searchDisclosures() {
+            if (!this.disclosureSearch.companyName.trim() && this.disclosureSearch.corpCls === '') {
+              // 회사명이 없으면 최근 공시 로딩
+              await this.loadRecentDisclosures();
+              return;
+            }
+
+            this.disclosureLoading = true;
+            try {
+              let url = `/api/v1/stocks/disclosures?days=${this.disclosureSearch.days}&page_count=20`;
+              
+              if (this.disclosureSearch.corpCls) {
+                url += `&corp_cls=${this.disclosureSearch.corpCls}`;
+              }
+
+              const response = await fetch(url);
+              
+              if (response.ok) {
+                const result = await response.json();
+                if (result.success) {
+                  let disclosures = result.data || [];
+                  
+                  // 회사명으로 필터링
+                  if (this.disclosureSearch.companyName.trim()) {
+                    const searchTerm = this.disclosureSearch.companyName.trim().toLowerCase();
+                    disclosures = disclosures.filter(d => 
+                      d.corp_name.toLowerCase().includes(searchTerm)
+                    );
+                  }
+                  
+                  this.disclosures = disclosures;
+                  this.lastDisclosureUpdate = new Date().toLocaleTimeString();
+                } else {
+                  alert(result.error || "공시정보 검색에 실패했습니다.");
+                }
+              } else {
+                alert("공시정보 검색 중 오류가 발생했습니다.");
+              }
+            } catch (error) {
+              console.error("공시정보 검색 오류:", error);
+              alert("공시정보 검색 중 오류가 발생했습니다.");
+            } finally {
+              this.disclosureLoading = false;
+            }
+          },
+
+          async viewDisclosureDetail(disclosure) {
+            try {
+              const response = await fetch(`/api/v1/stocks/disclosure/${disclosure.rcept_no}`);
+              
+              if (response.ok) {
+                const result = await response.json();
+                if (result.success && result.dart_viewer_url) {
+                  // DART 뷰어에서 공시 상세 내용 보기
+                  window.open(result.dart_viewer_url, '_blank');
+                } else {
+                  alert("공시 상세 정보를 불러올 수 없습니다.");
+                }
+              } else {
+                alert("공시 상세 정보 조회 중 오류가 발생했습니다.");
+              }
+            } catch (error) {
+              console.error("공시 상세 조회 오류:", error);
+              alert("공시 상세 정보 조회 중 오류가 발생했습니다.");
+            }
+          },
+
+          async explainDisclosure(disclosure) {
+            this.isLoading = true;
+            try {
+              const response = await fetch("/api/v1/stocks/ai-explain/event", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/x-www-form-urlencoded",
+                },
+                body: new URLSearchParams({
+                  event_title: disclosure.report_nm,
+                  event_details: `회사명: ${disclosure.corp_name}, 접수일: ${disclosure.rcept_dt}, 제출인: ${disclosure.flr_nm}`
+                })
+              });
+              
+              if (response.ok) {
+                this.aiExplanation = await response.json();
+                this.showAiExplanationModal = true;
+              } else {
+                alert("AI 설명을 가져올 수 없습니다.");
+              }
+            } catch (error) {
+              console.error("공시 설명 실패:", error);
+              alert("공시 설명 중 오류가 발생했습니다.");
             } finally {
               this.isLoading = false;
             }
