@@ -45,6 +45,9 @@ class Settings(BaseSettings):
     # 로깅 설정
     LOG_LEVEL: str = "INFO"
     
+    # 데이터 파이프라인 설정
+    ENABLE_DATA_PIPELINE: bool = False
+    
     class Config:
         env_file = ".env"
         case_sensitive = True

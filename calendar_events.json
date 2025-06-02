@@ -1,629 +1,1597 @@
 [
   {
-    "id": "real_earnings_005930",
-    "title": "삼성전자 1Q25 실적발표",
-    "start": "2025-06-05",
-    "className": "event-earnings",
-    "description": "삼성전자의 1Q25 분기 실적을 발표합니다.",
+    "id": "earning_005930_1Q25",
+    "title": "📊 삼성전자 1Q25 실적발표",
+    "start": "2025-04-25",
+    "backgroundColor": "#10b981",
+    "borderColor": "#10b981",
     "extendedProps": {
       "eventType": "earnings",
       "stockCode": "005930",
       "stockName": "삼성전자",
-      "currentPrice": "56200",
-      "changeRate": "0.18",
+      "description": "삼성전자 1Q25 실적발표입니다. 매출액, 영업이익, 순이익 등 주요 재무지표가 공개됩니다.",
       "importance": "high",
-      "details": "분기 실적 발표\n현재가: 56200원 (0.18%)\n투자자동향: 30건 데이터",
-      "time": "15:30",
-      "source": "실제 KIS API 데이터"
+      "details": "시간: 16:00 (장마감 후)\\n장소: 실적설명회\\n예상: 시장 관심도 높음",
+      "time": "16:00"
     }
   },
   {
-    "id": "real_earnings_000660",
-    "title": "SK하이닉스 1Q25 실적발표",
-    "start": "2025-06-12",
-    "className": "event-earnings",
-    "description": "SK하이닉스의 1Q25 분기 실적을 발표합니다.",
+    "id": "earning_000660_1Q25",
+    "title": "📊 SK하이닉스 1Q25 실적발표",
+    "start": "2025-04-28",
+    "backgroundColor": "#10b981",
+    "borderColor": "#10b981",
     "extendedProps": {
       "eventType": "earnings",
       "stockCode": "000660",
       "stockName": "SK하이닉스",
-      "currentPrice": "204500",
-      "changeRate": "-3.54",
+      "description": "SK하이닉스 1Q25 실적발표입니다. 매출액, 영업이익, 순이익 등 주요 재무지표가 공개됩니다.",
       "importance": "high",
-      "details": "분기 실적 발표\n현재가: 204500원 (-3.54%)\n투자자동향: 30건 데이터",
-      "time": "15:30",
-      "source": "실제 KIS API 데이터"
+      "details": "시간: 16:00 (장마감 후)\\n장소: 실적설명회\\n예상: 시장 관심도 높음",
+      "time": "16:00"
     }
   },
   {
-    "id": "real_earnings_035720",
-    "title": "카카오 1Q25 실적발표",
-    "start": "2025-06-19",
-    "className": "event-earnings",
-    "description": "카카오의 1Q25 분기 실적을 발표합니다.",
-    "extendedProps": {
-      "eventType": "earnings",
-      "stockCode": "035720",
-      "stockName": "카카오",
-      "currentPrice": "42700",
-      "changeRate": "-2.95",
-      "importance": "high",
-      "details": "분기 실적 발표\n현재가: 42700원 (-2.95%)\n투자자동향: 30건 데이터",
-      "time": "15:30",
-      "source": "실제 KIS API 데이터"
-    }
-  },
-  {
-    "id": "real_earnings_051910",
-    "title": "LG화학 1Q25 실적발표",
-    "start": "2025-06-26",
-    "className": "event-earnings",
-    "description": "LG화학의 1Q25 분기 실적을 발표합니다.",
-    "extendedProps": {
-      "eventType": "earnings",
-      "stockCode": "051910",
-      "stockName": "LG화학",
-      "currentPrice": "197300",
-      "changeRate": "-1.00",
-      "importance": "high",
-      "details": "분기 실적 발표\n현재가: 197300원 (-1.00%)\n투자자동향: 30건 데이터",
-      "time": "15:30",
-      "source": "실제 KIS API 데이터"
-    }
-  },
-  {
-    "id": "real_earnings_006400",
-    "title": "삼성SDI 1Q25 실적발표",
-    "start": "2025-07-03",
-    "className": "event-earnings",
-    "description": "삼성SDI의 1Q25 분기 실적을 발표합니다.",
-    "extendedProps": {
-      "eventType": "earnings",
-      "stockCode": "006400",
-      "stockName": "삼성SDI",
-      "currentPrice": "168900",
-      "changeRate": "-3.15",
-      "importance": "high",
-      "details": "분기 실적 발표\n현재가: 168900원 (-3.15%)\n투자자동향: 30건 데이터",
-      "time": "15:30",
-      "source": "실제 KIS API 데이터"
-    }
-  },
-  {
-    "id": "real_earnings_207940",
-    "title": "삼성바이오로직스 1Q25 실적발표",
-    "start": "2025-07-10",
-    "className": "event-earnings",
-    "description": "삼성바이오로직스의 1Q25 분기 실적을 발표합니다.",
-    "extendedProps": {
-      "eventType": "earnings",
-      "stockCode": "207940",
-      "stockName": "삼성바이오로직스",
-      "currentPrice": "1032000",
-      "changeRate": "0.58",
-      "importance": "high",
-      "details": "분기 실적 발표\n현재가: 1032000원 (0.58%)\n투자자동향: 30건 데이터",
-      "time": "15:30",
-      "source": "실제 KIS API 데이터"
-    }
-  },
-  {
-    "id": "real_earnings_068270",
-    "title": "셀트리온 1Q25 실적발표",
-    "start": "2025-07-17",
-    "className": "event-earnings",
-    "description": "셀트리온의 1Q25 분기 실적을 발표합니다.",
-    "extendedProps": {
-      "eventType": "earnings",
-      "stockCode": "068270",
-      "stockName": "셀트리온",
-      "currentPrice": "161000",
-      "changeRate": "1.45",
-      "importance": "high",
-      "details": "분기 실적 발표\n현재가: 161000원 (1.45%)\n투자자동향: 30건 데이터",
-      "time": "15:30",
-      "source": "실제 KIS API 데이터"
-    }
-  },
-  {
-    "id": "real_earnings_003670",
-    "title": "포스코홀딩스 1Q25 실적발표",
-    "start": "2025-07-24",
-    "className": "event-earnings",
-    "description": "포스코홀딩스의 1Q25 분기 실적을 발표합니다.",
-    "extendedProps": {
-      "eventType": "earnings",
-      "stockCode": "003670",
-      "stockName": "포스코홀딩스",
-      "currentPrice": "116600",
-      "changeRate": "2.82",
-      "importance": "high",
-      "details": "분기 실적 발표\n현재가: 116600원 (2.82%)\n투자자동향: 30건 데이터",
-      "time": "15:30",
-      "source": "실제 KIS API 데이터"
-    }
-  },
-  {
-    "id": "real_earnings_096770",
-    "title": "SK이노베이션 1Q25 실적발표",
-    "start": "2025-07-31",
-    "className": "event-earnings",
-    "description": "SK이노베이션의 1Q25 분기 실적을 발표합니다.",
-    "extendedProps": {
-      "eventType": "earnings",
-      "stockCode": "096770",
-      "stockName": "SK이노베이션",
-      "currentPrice": "89500",
-      "changeRate": "-0.33",
-      "importance": "high",
-      "details": "분기 실적 발표\n현재가: 89500원 (-0.33%)\n투자자동향: 30건 데이터",
-      "time": "15:30",
-      "source": "실제 KIS API 데이터"
-    }
-  },
-  {
-    "id": "real_earnings_028260",
-    "title": "삼성물산 1Q25 실적발표",
-    "start": "2025-08-07",
-    "className": "event-earnings",
-    "description": "삼성물산의 1Q25 분기 실적을 발표합니다.",
-    "extendedProps": {
-      "eventType": "earnings",
-      "stockCode": "028260",
-      "stockName": "삼성물산",
-      "currentPrice": "149800",
-      "changeRate": "-3.04",
-      "importance": "high",
-      "details": "분기 실적 발표\n현재가: 149800원 (-3.04%)\n투자자동향: 30건 데이터",
-      "time": "15:30",
-      "source": "실제 KIS API 데이터"
-    }
-  },
-  {
-    "id": "real_earnings_066570",
-    "title": "LG전자 1Q25 실적발표",
-    "start": "2025-08-14",
-    "className": "event-earnings",
-    "description": "LG전자의 1Q25 분기 실적을 발표합니다.",
-    "extendedProps": {
-      "eventType": "earnings",
-      "stockCode": "066570",
-      "stockName": "LG전자",
-      "currentPrice": "71100",
-      "changeRate": "-1.52",
-      "importance": "high",
-      "details": "분기 실적 발표\n현재가: 71100원 (-1.52%)\n투자자동향: 30건 데이터",
-      "time": "15:30",
-      "source": "실제 KIS API 데이터"
-    }
-  },
-  {
-    "id": "real_earnings_035420",
-    "title": "NAVER 1Q25 실적발표",
-    "start": "2025-08-21",
-    "className": "event-earnings",
-    "description": "NAVER의 1Q25 분기 실적을 발표합니다.",
+    "id": "earning_035420_1Q25",
+    "title": "📊 NAVER 1Q25 실적발표",
+    "start": "2025-04-30",
+    "backgroundColor": "#10b981",
+    "borderColor": "#10b981",
     "extendedProps": {
       "eventType": "earnings",
       "stockCode": "035420",
       "stockName": "NAVER",
-      "currentPrice": "187500",
-      "changeRate": "-0.95",
+      "description": "NAVER 1Q25 실적발표입니다. 매출액, 영업이익, 순이익 등 주요 재무지표가 공개됩니다.",
       "importance": "high",
-      "details": "분기 실적 발표\n현재가: 187500원 (-0.95%)\n투자자동향: 30건 데이터",
-      "time": "15:30",
-      "source": "실제 KIS API 데이터"
+      "details": "시간: 16:00 (장마감 후)\\n장소: 실적설명회\\n예상: 시장 관심도 높음",
+      "time": "16:00"
     }
   },
   {
-    "id": "real_dividend_005930_기준일",
-    "title": "삼성전자 배당 기준일",
-    "start": "2025-06-13",
-    "className": "event-dividend",
-    "description": "삼성전자의 배당 기준일입니다.",
+    "id": "earning_035720_1Q25",
+    "title": "📊 카카오 1Q25 실적발표",
+    "start": "2025-05-02",
+    "backgroundColor": "#10b981",
+    "borderColor": "#10b981",
     "extendedProps": {
-      "eventType": "dividend",
-      "stockCode": "005930",
-      "stockName": "삼성전자",
-      "currentPrice": "56200",
-      "importance": "medium",
-      "details": "배당 기준일\n배당금: 1,444원\n현재가: 56200원\n배당수익률: 2.57%",
-      "time": "09:00",
-      "dividendAmount": "1,444원"
+      "eventType": "earnings",
+      "stockCode": "035720",
+      "stockName": "카카오",
+      "description": "카카오 1Q25 실적발표입니다. 매출액, 영업이익, 순이익 등 주요 재무지표가 공개됩니다.",
+      "importance": "high",
+      "details": "시간: 16:00 (장마감 후)\\n장소: 실적설명회\\n예상: 시장 관심도 높음",
+      "time": "16:00"
     }
   },
   {
-    "id": "real_dividend_005930_지급일",
-    "title": "삼성전자 배당 지급일",
-    "start": "2025-06-30",
-    "className": "event-dividend",
-    "description": "삼성전자의 배당 지급일입니다.",
+    "id": "earning_051910_1Q25",
+    "title": "📊 LG화학 1Q25 실적발표",
+    "start": "2025-05-05",
+    "backgroundColor": "#10b981",
+    "borderColor": "#10b981",
     "extendedProps": {
-      "eventType": "dividend",
-      "stockCode": "005930",
-      "stockName": "삼성전자",
-      "currentPrice": "56200",
-      "importance": "medium",
-      "details": "배당 지급일\n배당금: 1,444원\n현재가: 56200원\n배당수익률: 2.57%",
-      "time": "09:00",
-      "dividendAmount": "1,444원"
-    }
-  },
-  {
-    "id": "real_dividend_000660_기준일",
-    "title": "SK하이닉스 배당 기준일",
-    "start": "2025-06-20",
-    "className": "event-dividend",
-    "description": "SK하이닉스의 배당 기준일입니다.",
-    "extendedProps": {
-      "eventType": "dividend",
-      "stockCode": "000660",
-      "stockName": "SK하이닉스",
-      "currentPrice": "204500",
-      "importance": "medium",
-      "details": "배당 기준일\n배당금: 2,000원\n현재가: 204500원\n배당수익률: 0.98%",
-      "time": "09:00",
-      "dividendAmount": "2,000원"
-    }
-  },
-  {
-    "id": "real_dividend_000660_지급일",
-    "title": "SK하이닉스 배당 지급일",
-    "start": "2025-07-15",
-    "className": "event-dividend",
-    "description": "SK하이닉스의 배당 지급일입니다.",
-    "extendedProps": {
-      "eventType": "dividend",
-      "stockCode": "000660",
-      "stockName": "SK하이닉스",
-      "currentPrice": "204500",
-      "importance": "medium",
-      "details": "배당 지급일\n배당금: 2,000원\n현재가: 204500원\n배당수익률: 0.98%",
-      "time": "09:00",
-      "dividendAmount": "2,000원"
-    }
-  },
-  {
-    "id": "real_dividend_051910_기준일",
-    "title": "LG화학 배당 기준일",
-    "start": "2025-07-05",
-    "className": "event-dividend",
-    "description": "LG화학의 배당 기준일입니다.",
-    "extendedProps": {
-      "eventType": "dividend",
+      "eventType": "earnings",
       "stockCode": "051910",
       "stockName": "LG화학",
-      "currentPrice": "197300",
-      "importance": "medium",
-      "details": "배당 기준일\n배당금: 3,000원\n현재가: 197300원\n배당수익률: 1.52%",
-      "time": "09:00",
-      "dividendAmount": "3,000원"
+      "description": "LG화학 1Q25 실적발표입니다. 매출액, 영업이익, 순이익 등 주요 재무지표가 공개됩니다.",
+      "importance": "high",
+      "details": "시간: 16:00 (장마감 후)\\n장소: 실적설명회\\n예상: 시장 관심도 높음",
+      "time": "16:00"
     }
   },
   {
-    "id": "real_dividend_051910_지급일",
-    "title": "LG화학 배당 지급일",
+    "id": "earning_005380_1Q25",
+    "title": "📊 현대차 1Q25 실적발표",
+    "start": "2025-05-07",
+    "backgroundColor": "#10b981",
+    "borderColor": "#10b981",
+    "extendedProps": {
+      "eventType": "earnings",
+      "stockCode": "005380",
+      "stockName": "현대차",
+      "description": "현대차 1Q25 실적발표입니다. 매출액, 영업이익, 순이익 등 주요 재무지표가 공개됩니다.",
+      "importance": "high",
+      "details": "시간: 16:00 (장마감 후)\\n장소: 실적설명회\\n예상: 시장 관심도 높음",
+      "time": "16:00"
+    }
+  },
+  {
+    "id": "earning_068270_1Q25",
+    "title": "📊 셀트리온 1Q25 실적발표",
+    "start": "2025-05-09",
+    "backgroundColor": "#10b981",
+    "borderColor": "#10b981",
+    "extendedProps": {
+      "eventType": "earnings",
+      "stockCode": "068270",
+      "stockName": "셀트리온",
+      "description": "셀트리온 1Q25 실적발표입니다. 매출액, 영업이익, 순이익 등 주요 재무지표가 공개됩니다.",
+      "importance": "high",
+      "details": "시간: 16:00 (장마감 후)\\n장소: 실적설명회\\n예상: 시장 관심도 높음",
+      "time": "16:00"
+    }
+  },
+  {
+    "id": "earning_005930_2Q25",
+    "title": "📊 삼성전자 2Q25 실적발표",
     "start": "2025-07-25",
-    "className": "event-dividend",
-    "description": "LG화학의 배당 지급일입니다.",
+    "backgroundColor": "#10b981",
+    "borderColor": "#10b981",
+    "extendedProps": {
+      "eventType": "earnings",
+      "stockCode": "005930",
+      "stockName": "삼성전자",
+      "description": "삼성전자 2Q25 실적발표입니다. 매출액, 영업이익, 순이익 등 주요 재무지표가 공개됩니다.",
+      "importance": "high",
+      "details": "시간: 16:00 (장마감 후)\\n장소: 실적설명회\\n예상: 시장 관심도 높음",
+      "time": "16:00"
+    }
+  },
+  {
+    "id": "earning_000660_2Q25",
+    "title": "📊 SK하이닉스 2Q25 실적발표",
+    "start": "2025-07-28",
+    "backgroundColor": "#10b981",
+    "borderColor": "#10b981",
+    "extendedProps": {
+      "eventType": "earnings",
+      "stockCode": "000660",
+      "stockName": "SK하이닉스",
+      "description": "SK하이닉스 2Q25 실적발표입니다. 매출액, 영업이익, 순이익 등 주요 재무지표가 공개됩니다.",
+      "importance": "high",
+      "details": "시간: 16:00 (장마감 후)\\n장소: 실적설명회\\n예상: 시장 관심도 높음",
+      "time": "16:00"
+    }
+  },
+  {
+    "id": "earning_035420_2Q25",
+    "title": "📊 NAVER 2Q25 실적발표",
+    "start": "2025-07-30",
+    "backgroundColor": "#10b981",
+    "borderColor": "#10b981",
+    "extendedProps": {
+      "eventType": "earnings",
+      "stockCode": "035420",
+      "stockName": "NAVER",
+      "description": "NAVER 2Q25 실적발표입니다. 매출액, 영업이익, 순이익 등 주요 재무지표가 공개됩니다.",
+      "importance": "high",
+      "details": "시간: 16:00 (장마감 후)\\n장소: 실적설명회\\n예상: 시장 관심도 높음",
+      "time": "16:00"
+    }
+  },
+  {
+    "id": "earning_035720_2Q25",
+    "title": "📊 카카오 2Q25 실적발표",
+    "start": "2025-08-01",
+    "backgroundColor": "#10b981",
+    "borderColor": "#10b981",
+    "extendedProps": {
+      "eventType": "earnings",
+      "stockCode": "035720",
+      "stockName": "카카오",
+      "description": "카카오 2Q25 실적발표입니다. 매출액, 영업이익, 순이익 등 주요 재무지표가 공개됩니다.",
+      "importance": "high",
+      "details": "시간: 16:00 (장마감 후)\\n장소: 실적설명회\\n예상: 시장 관심도 높음",
+      "time": "16:00"
+    }
+  },
+  {
+    "id": "earning_051910_2Q25",
+    "title": "📊 LG화학 2Q25 실적발표",
+    "start": "2025-08-04",
+    "backgroundColor": "#10b981",
+    "borderColor": "#10b981",
+    "extendedProps": {
+      "eventType": "earnings",
+      "stockCode": "051910",
+      "stockName": "LG화학",
+      "description": "LG화학 2Q25 실적발표입니다. 매출액, 영업이익, 순이익 등 주요 재무지표가 공개됩니다.",
+      "importance": "high",
+      "details": "시간: 16:00 (장마감 후)\\n장소: 실적설명회\\n예상: 시장 관심도 높음",
+      "time": "16:00"
+    }
+  },
+  {
+    "id": "earning_005930_3Q25",
+    "title": "📊 삼성전자 3Q25 실적발표",
+    "start": "2025-10-24",
+    "backgroundColor": "#10b981",
+    "borderColor": "#10b981",
+    "extendedProps": {
+      "eventType": "earnings",
+      "stockCode": "005930",
+      "stockName": "삼성전자",
+      "description": "삼성전자 3Q25 실적발표입니다. 매출액, 영업이익, 순이익 등 주요 재무지표가 공개됩니다.",
+      "importance": "high",
+      "details": "시간: 16:00 (장마감 후)\\n장소: 실적설명회\\n예상: 시장 관심도 높음",
+      "time": "16:00"
+    }
+  },
+  {
+    "id": "earning_000660_3Q25",
+    "title": "📊 SK하이닉스 3Q25 실적발표",
+    "start": "2025-10-27",
+    "backgroundColor": "#10b981",
+    "borderColor": "#10b981",
+    "extendedProps": {
+      "eventType": "earnings",
+      "stockCode": "000660",
+      "stockName": "SK하이닉스",
+      "description": "SK하이닉스 3Q25 실적발표입니다. 매출액, 영업이익, 순이익 등 주요 재무지표가 공개됩니다.",
+      "importance": "high",
+      "details": "시간: 16:00 (장마감 후)\\n장소: 실적설명회\\n예상: 시장 관심도 높음",
+      "time": "16:00"
+    }
+  },
+  {
+    "id": "earning_035420_3Q25",
+    "title": "📊 NAVER 3Q25 실적발표",
+    "start": "2025-10-29",
+    "backgroundColor": "#10b981",
+    "borderColor": "#10b981",
+    "extendedProps": {
+      "eventType": "earnings",
+      "stockCode": "035420",
+      "stockName": "NAVER",
+      "description": "NAVER 3Q25 실적발표입니다. 매출액, 영업이익, 순이익 등 주요 재무지표가 공개됩니다.",
+      "importance": "high",
+      "details": "시간: 16:00 (장마감 후)\\n장소: 실적설명회\\n예상: 시장 관심도 높음",
+      "time": "16:00"
+    }
+  },
+  {
+    "id": "earning_035720_3Q25",
+    "title": "📊 카카오 3Q25 실적발표",
+    "start": "2025-10-31",
+    "backgroundColor": "#10b981",
+    "borderColor": "#10b981",
+    "extendedProps": {
+      "eventType": "earnings",
+      "stockCode": "035720",
+      "stockName": "카카오",
+      "description": "카카오 3Q25 실적발표입니다. 매출액, 영업이익, 순이익 등 주요 재무지표가 공개됩니다.",
+      "importance": "high",
+      "details": "시간: 16:00 (장마감 후)\\n장소: 실적설명회\\n예상: 시장 관심도 높음",
+      "time": "16:00"
+    }
+  },
+  {
+    "id": "earning_005930_4Q24",
+    "title": "📊 삼성전자 4Q24 실적발표",
+    "start": "2025-01-24",
+    "backgroundColor": "#10b981",
+    "borderColor": "#10b981",
+    "extendedProps": {
+      "eventType": "earnings",
+      "stockCode": "005930",
+      "stockName": "삼성전자",
+      "description": "삼성전자 4Q24 실적발표입니다. 매출액, 영업이익, 순이익 등 주요 재무지표가 공개됩니다.",
+      "importance": "high",
+      "details": "시간: 16:00 (장마감 후)\\n장소: 실적설명회\\n예상: 시장 관심도 높음",
+      "time": "16:00"
+    }
+  },
+  {
+    "id": "earning_000660_4Q24",
+    "title": "📊 SK하이닉스 4Q24 실적발표",
+    "start": "2025-01-27",
+    "backgroundColor": "#10b981",
+    "borderColor": "#10b981",
+    "extendedProps": {
+      "eventType": "earnings",
+      "stockCode": "000660",
+      "stockName": "SK하이닉스",
+      "description": "SK하이닉스 4Q24 실적발표입니다. 매출액, 영업이익, 순이익 등 주요 재무지표가 공개됩니다.",
+      "importance": "high",
+      "details": "시간: 16:00 (장마감 후)\\n장소: 실적설명회\\n예상: 시장 관심도 높음",
+      "time": "16:00"
+    }
+  },
+  {
+    "id": "earning_035420_4Q24",
+    "title": "📊 NAVER 4Q24 실적발표",
+    "start": "2025-01-29",
+    "backgroundColor": "#10b981",
+    "borderColor": "#10b981",
+    "extendedProps": {
+      "eventType": "earnings",
+      "stockCode": "035420",
+      "stockName": "NAVER",
+      "description": "NAVER 4Q24 실적발표입니다. 매출액, 영업이익, 순이익 등 주요 재무지표가 공개됩니다.",
+      "importance": "high",
+      "details": "시간: 16:00 (장마감 후)\\n장소: 실적설명회\\n예상: 시장 관심도 높음",
+      "time": "16:00"
+    }
+  },
+  {
+    "id": "earning_035720_4Q24",
+    "title": "📊 카카오 4Q24 실적발표",
+    "start": "2025-01-31",
+    "backgroundColor": "#10b981",
+    "borderColor": "#10b981",
+    "extendedProps": {
+      "eventType": "earnings",
+      "stockCode": "035720",
+      "stockName": "카카오",
+      "description": "카카오 4Q24 실적발표입니다. 매출액, 영업이익, 순이익 등 주요 재무지표가 공개됩니다.",
+      "importance": "high",
+      "details": "시간: 16:00 (장마감 후)\\n장소: 실적설명회\\n예상: 시장 관심도 높음",
+      "time": "16:00"
+    }
+  },
+  {
+    "id": "dividend_005930_2025-04-15",
+    "title": "💰 삼성전자 배당금 지급",
+    "start": "2025-04-15",
+    "backgroundColor": "#f59e0b",
+    "borderColor": "#f59e0b",
+    "extendedProps": {
+      "eventType": "dividend",
+      "stockCode": "005930",
+      "stockName": "삼성전자",
+      "description": "삼성전자 결산배당 배당금 1,500원 지급일입니다.",
+      "importance": "medium",
+      "details": "배당금: 1,500원\\n배당유형: 결산배당\\n권리락일: 배당지급일 2영업일 전",
+      "amount": "1,500원"
+    }
+  },
+  {
+    "id": "dividend_000660_2025-04-18",
+    "title": "💰 SK하이닉스 배당금 지급",
+    "start": "2025-04-18",
+    "backgroundColor": "#f59e0b",
+    "borderColor": "#f59e0b",
+    "extendedProps": {
+      "eventType": "dividend",
+      "stockCode": "000660",
+      "stockName": "SK하이닉스",
+      "description": "SK하이닉스 결산배당 배당금 1,200원 지급일입니다.",
+      "importance": "medium",
+      "details": "배당금: 1,200원\\n배당유형: 결산배당\\n권리락일: 배당지급일 2영업일 전",
+      "amount": "1,200원"
+    }
+  },
+  {
+    "id": "dividend_035420_2025-09-15",
+    "title": "💰 NAVER 배당금 지급",
+    "start": "2025-09-15",
+    "backgroundColor": "#f59e0b",
+    "borderColor": "#f59e0b",
+    "extendedProps": {
+      "eventType": "dividend",
+      "stockCode": "035420",
+      "stockName": "NAVER",
+      "description": "NAVER 중간배당 배당금 600원 지급일입니다.",
+      "importance": "medium",
+      "details": "배당금: 600원\\n배당유형: 중간배당\\n권리락일: 배당지급일 2영업일 전",
+      "amount": "600원"
+    }
+  },
+  {
+    "id": "dividend_005380_2025-05-20",
+    "title": "💰 현대차 배당금 지급",
+    "start": "2025-05-20",
+    "backgroundColor": "#f59e0b",
+    "borderColor": "#f59e0b",
+    "extendedProps": {
+      "eventType": "dividend",
+      "stockCode": "005380",
+      "stockName": "현대차",
+      "description": "현대차 결산배당 배당금 2,800원 지급일입니다.",
+      "importance": "medium",
+      "details": "배당금: 2,800원\\n배당유형: 결산배당\\n권리락일: 배당지급일 2영업일 전",
+      "amount": "2,800원"
+    }
+  },
+  {
+    "id": "dividend_105560_2025-03-15",
+    "title": "💰 KB금융 배당금 지급",
+    "start": "2025-03-15",
+    "backgroundColor": "#f59e0b",
+    "borderColor": "#f59e0b",
+    "extendedProps": {
+      "eventType": "dividend",
+      "stockCode": "105560",
+      "stockName": "KB금융",
+      "description": "KB금융 분기배당 배당금 450원 지급일입니다.",
+      "importance": "medium",
+      "details": "배당금: 450원\\n배당유형: 분기배당\\n권리락일: 배당지급일 2영업일 전",
+      "amount": "450원"
+    }
+  },
+  {
+    "id": "dividend_055550_2025-06-15",
+    "title": "💰 신한지주 배당금 지급",
+    "start": "2025-06-15",
+    "backgroundColor": "#f59e0b",
+    "borderColor": "#f59e0b",
+    "extendedProps": {
+      "eventType": "dividend",
+      "stockCode": "055550",
+      "stockName": "신한지주",
+      "description": "신한지주 분기배당 배당금 400원 지급일입니다.",
+      "importance": "medium",
+      "details": "배당금: 400원\\n배당유형: 분기배당\\n권리락일: 배당지급일 2영업일 전",
+      "amount": "400원"
+    }
+  },
+  {
+    "id": "dividend_051910_2025-05-25",
+    "title": "💰 LG화학 배당금 지급",
+    "start": "2025-05-25",
+    "backgroundColor": "#f59e0b",
+    "borderColor": "#f59e0b",
     "extendedProps": {
       "eventType": "dividend",
       "stockCode": "051910",
       "stockName": "LG화학",
-      "currentPrice": "197300",
+      "description": "LG화학 결산배당 배당금 800원 지급일입니다.",
       "importance": "medium",
-      "details": "배당 지급일\n배당금: 3,000원\n현재가: 197300원\n배당수익률: 1.52%",
-      "time": "09:00",
-      "dividendAmount": "3,000원"
+      "details": "배당금: 800원\\n배당유형: 결산배당\\n권리락일: 배당지급일 2영업일 전",
+      "amount": "800원"
     }
   },
   {
-    "id": "real_economic_2025-06-02",
-    "title": "5월 고용동향",
-    "start": "2025-06-02",
-    "className": "event-economic",
-    "description": "통계청에서 5월 고용동향을 발표합니다.",
+    "id": "dividend_005490_2025-04-20",
+    "title": "💰 POSCO홀딩스 배당금 지급",
+    "start": "2025-04-20",
+    "backgroundColor": "#f59e0b",
+    "borderColor": "#f59e0b",
     "extendedProps": {
-      "eventType": "economic",
-      "importance": "high",
-      "details": "5월 고용동향\n발표기관: 통계청\n시장 영향도: 높음\n투자 포인트: 금리, 환율, 주식시장 전반에 영향",
-      "time": "08:00",
-      "agency": "통계청",
-      "source": "정부 공식 발표"
+      "eventType": "dividend",
+      "stockCode": "005490",
+      "stockName": "POSCO홀딩스",
+      "description": "POSCO홀딩스 결산배당 배당금 2,000원 지급일입니다.",
+      "importance": "medium",
+      "details": "배당금: 2,000원\\n배당유형: 결산배당\\n권리락일: 배당지급일 2영업일 전",
+      "amount": "2,000원"
     }
   },
   {
-    "id": "real_economic_2025-06-05",
-    "title": "1분기 GDP 확정치",
-    "start": "2025-06-05",
-    "className": "event-economic",
-    "description": "한국은행에서 1분기 GDP 확정치을 발표합니다.",
+    "id": "us_earning_AAPL_Q1_2025",
+    "title": "🇺🇸 Apple 실적발표",
+    "start": "2025-05-01",
+    "backgroundColor": "#3b82f6",
+    "borderColor": "#3b82f6",
     "extendedProps": {
-      "eventType": "economic",
+      "eventType": "earnings",
+      "stockCode": "AAPL",
+      "stockName": "Apple",
+      "description": "Apple Q1 2025 실적발표입니다. 매출, EPS 등 주요 지표가 발표됩니다.",
       "importance": "high",
-      "details": "1분기 GDP 확정치\n발표기관: 한국은행\n시장 영향도: 높음\n투자 포인트: 금리, 환율, 주식시장 전반에 영향",
-      "time": "08:00",
-      "agency": "한국은행",
-      "source": "정부 공식 발표"
+      "details": "시간: 장마감 후 (한국시간 06:00)\\n시장: 미국 증시\\n예상: 글로벌 시장 영향",
+      "market": "US",
+      "time": "06:00 (한국시간)"
     }
   },
   {
-    "id": "real_economic_2025-06-12",
-    "title": "5월 소비자물가동향",
-    "start": "2025-06-12",
-    "className": "event-economic",
-    "description": "통계청에서 5월 소비자물가동향을 발표합니다.",
+    "id": "us_earning_MSFT_Q1_2025",
+    "title": "🇺🇸 Microsoft 실적발표",
+    "start": "2025-04-26",
+    "backgroundColor": "#3b82f6",
+    "borderColor": "#3b82f6",
     "extendedProps": {
-      "eventType": "economic",
+      "eventType": "earnings",
+      "stockCode": "MSFT",
+      "stockName": "Microsoft",
+      "description": "Microsoft Q1 2025 실적발표입니다. 매출, EPS 등 주요 지표가 발표됩니다.",
       "importance": "high",
-      "details": "5월 소비자물가동향\n발표기관: 통계청\n시장 영향도: 높음\n투자 포인트: 금리, 환율, 주식시장 전반에 영향",
-      "time": "08:00",
-      "agency": "통계청",
-      "source": "정부 공식 발표"
+      "details": "시간: 장마감 후 (한국시간 06:00)\\n시장: 미국 증시\\n예상: 글로벌 시장 영향",
+      "market": "US",
+      "time": "06:00 (한국시간)"
     }
   },
   {
-    "id": "real_economic_2025-06-26",
-    "title": "5월 산업생산동향",
-    "start": "2025-06-26",
-    "className": "event-economic",
-    "description": "통계청에서 5월 산업생산동향을 발표합니다.",
+    "id": "us_earning_GOOGL_Q1_2025",
+    "title": "🇺🇸 Google 실적발표",
+    "start": "2025-04-29",
+    "backgroundColor": "#3b82f6",
+    "borderColor": "#3b82f6",
     "extendedProps": {
-      "eventType": "economic",
+      "eventType": "earnings",
+      "stockCode": "GOOGL",
+      "stockName": "Google",
+      "description": "Google Q1 2025 실적발표입니다. 매출, EPS 등 주요 지표가 발표됩니다.",
       "importance": "high",
-      "details": "5월 산업생산동향\n발표기관: 통계청\n시장 영향도: 높음\n투자 포인트: 금리, 환율, 주식시장 전반에 영향",
-      "time": "08:00",
-      "agency": "통계청",
-      "source": "정부 공식 발표"
+      "details": "시간: 장마감 후 (한국시간 06:00)\\n시장: 미국 증시\\n예상: 글로벌 시장 영향",
+      "market": "US",
+      "time": "06:00 (한국시간)"
     }
   },
   {
-    "id": "real_economic_2025-07-11",
-    "title": "한국은행 기준금리 결정",
-    "start": "2025-07-11",
-    "className": "event-economic",
-    "description": "한국은행에서 한국은행 기준금리 결정을 발표합니다.",
+    "id": "us_earning_AMZN_Q1_2025",
+    "title": "🇺🇸 Amazon 실적발표",
+    "start": "2025-05-03",
+    "backgroundColor": "#3b82f6",
+    "borderColor": "#3b82f6",
     "extendedProps": {
-      "eventType": "economic",
+      "eventType": "earnings",
+      "stockCode": "AMZN",
+      "stockName": "Amazon",
+      "description": "Amazon Q1 2025 실적발표입니다. 매출, EPS 등 주요 지표가 발표됩니다.",
       "importance": "high",
-      "details": "한국은행 기준금리 결정\n발표기관: 한국은행\n시장 영향도: 높음\n투자 포인트: 금리, 환율, 주식시장 전반에 영향",
-      "time": "14:00",
-      "agency": "한국은행",
-      "source": "정부 공식 발표"
+      "details": "시간: 장마감 후 (한국시간 06:00)\\n시장: 미국 증시\\n예상: 글로벌 시장 영향",
+      "market": "US",
+      "time": "06:00 (한국시간)"
     }
   },
   {
-    "id": "real_economic_2025-07-24",
-    "title": "2분기 GDP 속보",
-    "start": "2025-07-24",
-    "className": "event-economic",
-    "description": "한국은행에서 2분기 GDP 속보을 발표합니다.",
+    "id": "us_earning_TSLA_Q1_2025",
+    "title": "🇺🇸 Tesla 실적발표",
+    "start": "2025-04-24",
+    "backgroundColor": "#3b82f6",
+    "borderColor": "#3b82f6",
     "extendedProps": {
-      "eventType": "economic",
+      "eventType": "earnings",
+      "stockCode": "TSLA",
+      "stockName": "Tesla",
+      "description": "Tesla Q1 2025 실적발표입니다. 매출, EPS 등 주요 지표가 발표됩니다.",
       "importance": "high",
-      "details": "2분기 GDP 속보\n발표기관: 한국은행\n시장 영향도: 높음\n투자 포인트: 금리, 환율, 주식시장 전반에 영향",
-      "time": "08:00",
-      "agency": "한국은행",
-      "source": "정부 공식 발표"
+      "details": "시간: 장마감 후 (한국시간 06:00)\\n시장: 미국 증시\\n예상: 글로벌 시장 영향",
+      "market": "US",
+      "time": "06:00 (한국시간)"
     }
   },
   {
-    "id": "real_economic_2025-08-01",
-    "title": "7월 소비자물가동향",
+    "id": "us_earning_NVDA_Q1_2025",
+    "title": "🇺🇸 NVIDIA 실적발표",
+    "start": "2025-05-21",
+    "backgroundColor": "#3b82f6",
+    "borderColor": "#3b82f6",
+    "extendedProps": {
+      "eventType": "earnings",
+      "stockCode": "NVDA",
+      "stockName": "NVIDIA",
+      "description": "NVIDIA Q1 2025 실적발표입니다. 매출, EPS 등 주요 지표가 발표됩니다.",
+      "importance": "high",
+      "details": "시간: 장마감 후 (한국시간 06:00)\\n시장: 미국 증시\\n예상: 글로벌 시장 영향",
+      "market": "US",
+      "time": "06:00 (한국시간)"
+    }
+  },
+  {
+    "id": "us_earning_AAPL_Q2_2025",
+    "title": "🇺🇸 Apple 실적발표",
     "start": "2025-08-01",
-    "className": "event-economic",
-    "description": "통계청에서 7월 소비자물가동향을 발표합니다.",
+    "backgroundColor": "#3b82f6",
+    "borderColor": "#3b82f6",
+    "extendedProps": {
+      "eventType": "earnings",
+      "stockCode": "AAPL",
+      "stockName": "Apple",
+      "description": "Apple Q2 2025 실적발표입니다. 매출, EPS 등 주요 지표가 발표됩니다.",
+      "importance": "high",
+      "details": "시간: 장마감 후 (한국시간 06:00)\\n시장: 미국 증시\\n예상: 글로벌 시장 영향",
+      "market": "US",
+      "time": "06:00 (한국시간)"
+    }
+  },
+  {
+    "id": "us_earning_MSFT_Q2_2025",
+    "title": "🇺🇸 Microsoft 실적발표",
+    "start": "2025-07-26",
+    "backgroundColor": "#3b82f6",
+    "borderColor": "#3b82f6",
+    "extendedProps": {
+      "eventType": "earnings",
+      "stockCode": "MSFT",
+      "stockName": "Microsoft",
+      "description": "Microsoft Q2 2025 실적발표입니다. 매출, EPS 등 주요 지표가 발표됩니다.",
+      "importance": "high",
+      "details": "시간: 장마감 후 (한국시간 06:00)\\n시장: 미국 증시\\n예상: 글로벌 시장 영향",
+      "market": "US",
+      "time": "06:00 (한국시간)"
+    }
+  },
+  {
+    "id": "us_earning_GOOGL_Q2_2025",
+    "title": "🇺🇸 Google 실적발표",
+    "start": "2025-07-29",
+    "backgroundColor": "#3b82f6",
+    "borderColor": "#3b82f6",
+    "extendedProps": {
+      "eventType": "earnings",
+      "stockCode": "GOOGL",
+      "stockName": "Google",
+      "description": "Google Q2 2025 실적발표입니다. 매출, EPS 등 주요 지표가 발표됩니다.",
+      "importance": "high",
+      "details": "시간: 장마감 후 (한국시간 06:00)\\n시장: 미국 증시\\n예상: 글로벌 시장 영향",
+      "market": "US",
+      "time": "06:00 (한국시간)"
+    }
+  },
+  {
+    "id": "us_earning_AMZN_Q2_2025",
+    "title": "🇺🇸 Amazon 실적발표",
+    "start": "2025-08-03",
+    "backgroundColor": "#3b82f6",
+    "borderColor": "#3b82f6",
+    "extendedProps": {
+      "eventType": "earnings",
+      "stockCode": "AMZN",
+      "stockName": "Amazon",
+      "description": "Amazon Q2 2025 실적발표입니다. 매출, EPS 등 주요 지표가 발표됩니다.",
+      "importance": "high",
+      "details": "시간: 장마감 후 (한국시간 06:00)\\n시장: 미국 증시\\n예상: 글로벌 시장 영향",
+      "market": "US",
+      "time": "06:00 (한국시간)"
+    }
+  },
+  {
+    "id": "us_earning_AAPL_Q3_2025",
+    "title": "🇺🇸 Apple 실적발표",
+    "start": "2025-11-01",
+    "backgroundColor": "#3b82f6",
+    "borderColor": "#3b82f6",
+    "extendedProps": {
+      "eventType": "earnings",
+      "stockCode": "AAPL",
+      "stockName": "Apple",
+      "description": "Apple Q3 2025 실적발표입니다. 매출, EPS 등 주요 지표가 발표됩니다.",
+      "importance": "high",
+      "details": "시간: 장마감 후 (한국시간 06:00)\\n시장: 미국 증시\\n예상: 글로벌 시장 영향",
+      "market": "US",
+      "time": "06:00 (한국시간)"
+    }
+  },
+  {
+    "id": "us_earning_MSFT_Q3_2025",
+    "title": "🇺🇸 Microsoft 실적발표",
+    "start": "2025-10-26",
+    "backgroundColor": "#3b82f6",
+    "borderColor": "#3b82f6",
+    "extendedProps": {
+      "eventType": "earnings",
+      "stockCode": "MSFT",
+      "stockName": "Microsoft",
+      "description": "Microsoft Q3 2025 실적발표입니다. 매출, EPS 등 주요 지표가 발표됩니다.",
+      "importance": "high",
+      "details": "시간: 장마감 후 (한국시간 06:00)\\n시장: 미국 증시\\n예상: 글로벌 시장 영향",
+      "market": "US",
+      "time": "06:00 (한국시간)"
+    }
+  },
+  {
+    "id": "us_earning_AAPL_Q4_2024",
+    "title": "🇺🇸 Apple 실적발표",
+    "start": "2025-02-01",
+    "backgroundColor": "#3b82f6",
+    "borderColor": "#3b82f6",
+    "extendedProps": {
+      "eventType": "earnings",
+      "stockCode": "AAPL",
+      "stockName": "Apple",
+      "description": "Apple Q4 2024 실적발표입니다. 매출, EPS 등 주요 지표가 발표됩니다.",
+      "importance": "high",
+      "details": "시간: 장마감 후 (한국시간 06:00)\\n시장: 미국 증시\\n예상: 글로벌 시장 영향",
+      "market": "US",
+      "time": "06:00 (한국시간)"
+    }
+  },
+  {
+    "id": "us_earning_MSFT_Q4_2024",
+    "title": "🇺🇸 Microsoft 실적발표",
+    "start": "2025-01-26",
+    "backgroundColor": "#3b82f6",
+    "borderColor": "#3b82f6",
+    "extendedProps": {
+      "eventType": "earnings",
+      "stockCode": "MSFT",
+      "stockName": "Microsoft",
+      "description": "Microsoft Q4 2024 실적발표입니다. 매출, EPS 등 주요 지표가 발표됩니다.",
+      "importance": "high",
+      "details": "시간: 장마감 후 (한국시간 06:00)\\n시장: 미국 증시\\n예상: 글로벌 시장 영향",
+      "market": "US",
+      "time": "06:00 (한국시간)"
+    }
+  },
+  {
+    "id": "us_economic_2025-01-29",
+    "title": "🏛️ FOMC 회의",
+    "start": "2025-01-29",
+    "backgroundColor": "#dc2626",
+    "borderColor": "#dc2626",
     "extendedProps": {
       "eventType": "economic",
-      "importance": "high",
-      "details": "7월 소비자물가동향\n발표기관: 통계청\n시장 영향도: 높음\n투자 포인트: 금리, 환율, 주식시장 전반에 영향",
-      "time": "08:00",
-      "agency": "통계청",
-      "source": "정부 공식 발표"
+      "description": "미국 FOMC 회의입니다. 글로벌 금융시장에 큰 영향을 미칠 수 있습니다.",
+      "importance": "very_high",
+      "details": "시간: 22:30 (한국시간)\\n발표기관: 미국 연방준비제도\\n영향도: very_high",
+      "market": "Global",
+      "time": "22:30 (한국시간)"
     }
   },
   {
-    "id": "official_holiday_2025-06-06",
-    "title": "증시 휴장 - 현충일",
-    "start": "2025-06-06",
-    "className": "event-holiday",
-    "description": "현충일 증권거래소 휴장일",
+    "id": "us_economic_2025-02-12",
+    "title": "🏛️ 미국 CPI 발표",
+    "start": "2025-02-12",
+    "backgroundColor": "#dc2626",
+    "borderColor": "#dc2626",
     "extendedProps": {
-      "eventType": "holiday",
+      "eventType": "economic",
+      "description": "미국 미국 CPI 발표입니다. 글로벌 금융시장에 큰 영향을 미칠 수 있습니다.",
       "importance": "high",
-      "details": "한국증권거래소 공식 휴장일\n사유: 현충일 (법정공휴일)\n거래 재개: 다음 영업일",
-      "allDay": true,
-      "source": "한국거래소 공식"
+      "details": "시간: 22:30 (한국시간)\\n발표기관: 미국 연방준비제도\\n영향도: high",
+      "market": "Global",
+      "time": "22:30 (한국시간)"
     }
   },
   {
-    "id": "official_holiday_2025-08-15",
-    "title": "증시 휴장 - 광복절",
-    "start": "2025-08-15",
-    "className": "event-holiday",
-    "description": "광복절 증권거래소 휴장일",
+    "id": "us_economic_2025-03-19",
+    "title": "🏛️ FOMC 회의",
+    "start": "2025-03-19",
+    "backgroundColor": "#dc2626",
+    "borderColor": "#dc2626",
     "extendedProps": {
-      "eventType": "holiday",
-      "importance": "high",
-      "details": "한국증권거래소 공식 휴장일\n사유: 광복절 (법정공휴일)\n거래 재개: 다음 영업일",
-      "allDay": true,
-      "source": "한국거래소 공식"
+      "eventType": "economic",
+      "description": "미국 FOMC 회의입니다. 글로벌 금융시장에 큰 영향을 미칠 수 있습니다.",
+      "importance": "very_high",
+      "details": "시간: 22:30 (한국시간)\\n발표기관: 미국 연방준비제도\\n영향도: very_high",
+      "market": "Global",
+      "time": "22:30 (한국시간)"
     }
   },
   {
-    "id": "official_holiday_2025-09-16",
-    "title": "증시 휴장 - 추석 연휴",
-    "start": "2025-09-16",
-    "className": "event-holiday",
-    "description": "추석 연휴 증권거래소 휴장일",
+    "id": "us_economic_2025-04-04",
+    "title": "🏛️ 미국 고용지표",
+    "start": "2025-04-04",
+    "backgroundColor": "#dc2626",
+    "borderColor": "#dc2626",
     "extendedProps": {
-      "eventType": "holiday",
+      "eventType": "economic",
+      "description": "미국 미국 고용지표입니다. 글로벌 금융시장에 큰 영향을 미칠 수 있습니다.",
       "importance": "high",
-      "details": "한국증권거래소 공식 휴장일\n사유: 추석 연휴 (법정공휴일)\n거래 재개: 다음 영업일",
-      "allDay": true,
-      "source": "한국거래소 공식"
+      "details": "시간: 22:30 (한국시간)\\n발표기관: 미국 연방준비제도\\n영향도: high",
+      "market": "Global",
+      "time": "22:30 (한국시간)"
     }
   },
   {
-    "id": "official_holiday_2025-09-17",
-    "title": "증시 휴장 - 추석",
+    "id": "us_economic_2025-05-01",
+    "title": "🏛️ FOMC 회의",
+    "start": "2025-05-01",
+    "backgroundColor": "#dc2626",
+    "borderColor": "#dc2626",
+    "extendedProps": {
+      "eventType": "economic",
+      "description": "미국 FOMC 회의입니다. 글로벌 금융시장에 큰 영향을 미칠 수 있습니다.",
+      "importance": "very_high",
+      "details": "시간: 22:30 (한국시간)\\n발표기관: 미국 연방준비제도\\n영향도: very_high",
+      "market": "Global",
+      "time": "22:30 (한국시간)"
+    }
+  },
+  {
+    "id": "us_economic_2025-05-29",
+    "title": "🏛️ 미국 GDP 발표",
+    "start": "2025-05-29",
+    "backgroundColor": "#dc2626",
+    "borderColor": "#dc2626",
+    "extendedProps": {
+      "eventType": "economic",
+      "description": "미국 미국 GDP 발표입니다. 글로벌 금융시장에 큰 영향을 미칠 수 있습니다.",
+      "importance": "high",
+      "details": "시간: 22:30 (한국시간)\\n발표기관: 미국 연방준비제도\\n영향도: high",
+      "market": "Global",
+      "time": "22:30 (한국시간)"
+    }
+  },
+  {
+    "id": "us_economic_2025-06-18",
+    "title": "🏛️ FOMC 회의",
+    "start": "2025-06-18",
+    "backgroundColor": "#dc2626",
+    "borderColor": "#dc2626",
+    "extendedProps": {
+      "eventType": "economic",
+      "description": "미국 FOMC 회의입니다. 글로벌 금융시장에 큰 영향을 미칠 수 있습니다.",
+      "importance": "very_high",
+      "details": "시간: 22:30 (한국시간)\\n발표기관: 미국 연방준비제도\\n영향도: very_high",
+      "market": "Global",
+      "time": "22:30 (한국시간)"
+    }
+  },
+  {
+    "id": "us_economic_2025-07-10",
+    "title": "🏛️ 미국 CPI 발표",
+    "start": "2025-07-10",
+    "backgroundColor": "#dc2626",
+    "borderColor": "#dc2626",
+    "extendedProps": {
+      "eventType": "economic",
+      "description": "미국 미국 CPI 발표입니다. 글로벌 금융시장에 큰 영향을 미칠 수 있습니다.",
+      "importance": "high",
+      "details": "시간: 22:30 (한국시간)\\n발표기관: 미국 연방준비제도\\n영향도: high",
+      "market": "Global",
+      "time": "22:30 (한국시간)"
+    }
+  },
+  {
+    "id": "us_economic_2025-07-30",
+    "title": "🏛️ FOMC 회의",
+    "start": "2025-07-30",
+    "backgroundColor": "#dc2626",
+    "borderColor": "#dc2626",
+    "extendedProps": {
+      "eventType": "economic",
+      "description": "미국 FOMC 회의입니다. 글로벌 금융시장에 큰 영향을 미칠 수 있습니다.",
+      "importance": "very_high",
+      "details": "시간: 22:30 (한국시간)\\n발표기관: 미국 연방준비제도\\n영향도: very_high",
+      "market": "Global",
+      "time": "22:30 (한국시간)"
+    }
+  },
+  {
+    "id": "us_economic_2025-09-17",
+    "title": "🏛️ FOMC 회의",
     "start": "2025-09-17",
-    "className": "event-holiday",
-    "description": "추석 증권거래소 휴장일",
+    "backgroundColor": "#dc2626",
+    "borderColor": "#dc2626",
     "extendedProps": {
-      "eventType": "holiday",
-      "importance": "high",
-      "details": "한국증권거래소 공식 휴장일\n사유: 추석 (법정공휴일)\n거래 재개: 다음 영업일",
-      "allDay": true,
-      "source": "한국거래소 공식"
+      "eventType": "economic",
+      "description": "미국 FOMC 회의입니다. 글로벌 금융시장에 큰 영향을 미칠 수 있습니다.",
+      "importance": "very_high",
+      "details": "시간: 22:30 (한국시간)\\n발표기관: 미국 연방준비제도\\n영향도: very_high",
+      "market": "Global",
+      "time": "22:30 (한국시간)"
     }
   },
   {
-    "id": "official_holiday_2025-09-18",
-    "title": "증시 휴장 - 추석 연휴",
-    "start": "2025-09-18",
-    "className": "event-holiday",
-    "description": "추석 연휴 증권거래소 휴장일",
-    "extendedProps": {
-      "eventType": "holiday",
-      "importance": "high",
-      "details": "한국증권거래소 공식 휴장일\n사유: 추석 연휴 (법정공휴일)\n거래 재개: 다음 영업일",
-      "allDay": true,
-      "source": "한국거래소 공식"
-    }
-  },
-  {
-    "id": "official_holiday_2025-10-03",
-    "title": "증시 휴장 - 개천절",
+    "id": "us_economic_2025-10-03",
+    "title": "🏛️ 미국 고용지표",
     "start": "2025-10-03",
-    "className": "event-holiday",
-    "description": "개천절 증권거래소 휴장일",
+    "backgroundColor": "#dc2626",
+    "borderColor": "#dc2626",
     "extendedProps": {
-      "eventType": "holiday",
+      "eventType": "economic",
+      "description": "미국 미국 고용지표입니다. 글로벌 금융시장에 큰 영향을 미칠 수 있습니다.",
       "importance": "high",
-      "details": "한국증권거래소 공식 휴장일\n사유: 개천절 (법정공휴일)\n거래 재개: 다음 영업일",
-      "allDay": true,
-      "source": "한국거래소 공식"
+      "details": "시간: 22:30 (한국시간)\\n발표기관: 미국 연방준비제도\\n영향도: high",
+      "market": "Global",
+      "time": "22:30 (한국시간)"
     }
   },
   {
-    "id": "official_holiday_2025-10-09",
-    "title": "증시 휴장 - 한글날",
-    "start": "2025-10-09",
-    "className": "event-holiday",
-    "description": "한글날 증권거래소 휴장일",
+    "id": "us_economic_2025-11-05",
+    "title": "🏛️ FOMC 회의",
+    "start": "2025-11-05",
+    "backgroundColor": "#dc2626",
+    "borderColor": "#dc2626",
     "extendedProps": {
-      "eventType": "holiday",
-      "importance": "high",
-      "details": "한국증권거래소 공식 휴장일\n사유: 한글날 (법정공휴일)\n거래 재개: 다음 영업일",
-      "allDay": true,
-      "source": "한국거래소 공식"
+      "eventType": "economic",
+      "description": "미국 FOMC 회의입니다. 글로벌 금융시장에 큰 영향을 미칠 수 있습니다.",
+      "importance": "very_high",
+      "details": "시간: 22:30 (한국시간)\\n발표기관: 미국 연방준비제도\\n영향도: very_high",
+      "market": "Global",
+      "time": "22:30 (한국시간)"
     }
   },
   {
-    "id": "real_ipo_2025-06-15",
-    "title": "하이브리드테크 IPO 상장",
+    "id": "us_economic_2025-12-17",
+    "title": "🏛️ FOMC 회의",
+    "start": "2025-12-17",
+    "backgroundColor": "#dc2626",
+    "borderColor": "#dc2626",
+    "extendedProps": {
+      "eventType": "economic",
+      "description": "미국 FOMC 회의입니다. 글로벌 금융시장에 큰 영향을 미칠 수 있습니다.",
+      "importance": "very_high",
+      "details": "시간: 22:30 (한국시간)\\n발표기관: 미국 연방준비제도\\n영향도: very_high",
+      "market": "Global",
+      "time": "22:30 (한국시간)"
+    }
+  },
+  {
+    "id": "kr_economic_2025-01-16",
+    "title": "🇰🇷 한국은행 기준금리 결정",
+    "start": "2025-01-16",
+    "backgroundColor": "#14b8a6",
+    "borderColor": "#14b8a6",
+    "extendedProps": {
+      "eventType": "economic",
+      "description": "한국 주요 경제지표: 한국은행 기준금리 결정",
+      "importance": "very_high",
+      "details": "시간: 08:00\\n발표기관: 한국은행/통계청\\n영향도: very_high",
+      "market": "Korea",
+      "time": "08:00"
+    }
+  },
+  {
+    "id": "kr_economic_2025-01-25",
+    "title": "🇰🇷 한국 GDP 발표",
+    "start": "2025-01-25",
+    "backgroundColor": "#14b8a6",
+    "borderColor": "#14b8a6",
+    "extendedProps": {
+      "eventType": "economic",
+      "description": "한국 주요 경제지표: 한국 GDP 발표",
+      "importance": "high",
+      "details": "시간: 08:00\\n발표기관: 한국은행/통계청\\n영향도: high",
+      "market": "Korea",
+      "time": "08:00"
+    }
+  },
+  {
+    "id": "kr_economic_2025-02-13",
+    "title": "🇰🇷 한국은행 기준금리 결정",
+    "start": "2025-02-13",
+    "backgroundColor": "#14b8a6",
+    "borderColor": "#14b8a6",
+    "extendedProps": {
+      "eventType": "economic",
+      "description": "한국 주요 경제지표: 한국은행 기준금리 결정",
+      "importance": "very_high",
+      "details": "시간: 08:00\\n발표기관: 한국은행/통계청\\n영향도: very_high",
+      "market": "Korea",
+      "time": "08:00"
+    }
+  },
+  {
+    "id": "kr_economic_2025-03-05",
+    "title": "🇰🇷 한국 CPI 발표",
+    "start": "2025-03-05",
+    "backgroundColor": "#14b8a6",
+    "borderColor": "#14b8a6",
+    "extendedProps": {
+      "eventType": "economic",
+      "description": "한국 주요 경제지표: 한국 CPI 발표",
+      "importance": "high",
+      "details": "시간: 08:00\\n발표기관: 한국은행/통계청\\n영향도: high",
+      "market": "Korea",
+      "time": "08:00"
+    }
+  },
+  {
+    "id": "kr_economic_2025-04-10",
+    "title": "🇰🇷 한국은행 기준금리 결정",
+    "start": "2025-04-10",
+    "backgroundColor": "#14b8a6",
+    "borderColor": "#14b8a6",
+    "extendedProps": {
+      "eventType": "economic",
+      "description": "한국 주요 경제지표: 한국은행 기준금리 결정",
+      "importance": "very_high",
+      "details": "시간: 08:00\\n발표기관: 한국은행/통계청\\n영향도: very_high",
+      "market": "Korea",
+      "time": "08:00"
+    }
+  },
+  {
+    "id": "kr_economic_2025-05-14",
+    "title": "🇰🇷 한국 고용동향",
+    "start": "2025-05-14",
+    "backgroundColor": "#14b8a6",
+    "borderColor": "#14b8a6",
+    "extendedProps": {
+      "eventType": "economic",
+      "description": "한국 주요 경제지표: 한국 고용동향",
+      "importance": "medium",
+      "details": "시간: 08:00\\n발표기관: 한국은행/통계청\\n영향도: medium",
+      "market": "Korea",
+      "time": "08:00"
+    }
+  },
+  {
+    "id": "kr_economic_2025-05-29",
+    "title": "🇰🇷 한국은행 기준금리 결정",
+    "start": "2025-05-29",
+    "backgroundColor": "#14b8a6",
+    "borderColor": "#14b8a6",
+    "extendedProps": {
+      "eventType": "economic",
+      "description": "한국 주요 경제지표: 한국은행 기준금리 결정",
+      "importance": "very_high",
+      "details": "시간: 08:00\\n발표기관: 한국은행/통계청\\n영향도: very_high",
+      "market": "Korea",
+      "time": "08:00"
+    }
+  },
+  {
+    "id": "kr_economic_2025-06-01",
+    "title": "🇰🇷 한국 무역수지",
+    "start": "2025-06-01",
+    "backgroundColor": "#14b8a6",
+    "borderColor": "#14b8a6",
+    "extendedProps": {
+      "eventType": "economic",
+      "description": "한국 주요 경제지표: 한국 무역수지",
+      "importance": "medium",
+      "details": "시간: 08:00\\n발표기관: 한국은행/통계청\\n영향도: medium",
+      "market": "Korea",
+      "time": "08:00"
+    }
+  },
+  {
+    "id": "kr_economic_2025-07-11",
+    "title": "🇰🇷 한국은행 기준금리 결정",
+    "start": "2025-07-11",
+    "backgroundColor": "#14b8a6",
+    "borderColor": "#14b8a6",
+    "extendedProps": {
+      "eventType": "economic",
+      "description": "한국 주요 경제지표: 한국은행 기준금리 결정",
+      "importance": "very_high",
+      "details": "시간: 08:00\\n발표기관: 한국은행/통계청\\n영향도: very_high",
+      "market": "Korea",
+      "time": "08:00"
+    }
+  },
+  {
+    "id": "kr_economic_2025-07-25",
+    "title": "🇰🇷 한국 GDP 발표",
+    "start": "2025-07-25",
+    "backgroundColor": "#14b8a6",
+    "borderColor": "#14b8a6",
+    "extendedProps": {
+      "eventType": "economic",
+      "description": "한국 주요 경제지표: 한국 GDP 발표",
+      "importance": "high",
+      "details": "시간: 08:00\\n발표기관: 한국은행/통계청\\n영향도: high",
+      "market": "Korea",
+      "time": "08:00"
+    }
+  },
+  {
+    "id": "kr_economic_2025-08-28",
+    "title": "🇰🇷 한국은행 기준금리 결정",
+    "start": "2025-08-28",
+    "backgroundColor": "#14b8a6",
+    "borderColor": "#14b8a6",
+    "extendedProps": {
+      "eventType": "economic",
+      "description": "한국 주요 경제지표: 한국은행 기준금리 결정",
+      "importance": "very_high",
+      "details": "시간: 08:00\\n발표기관: 한국은행/통계청\\n영향도: very_high",
+      "market": "Korea",
+      "time": "08:00"
+    }
+  },
+  {
+    "id": "kr_economic_2025-09-03",
+    "title": "🇰🇷 한국 CPI 발표",
+    "start": "2025-09-03",
+    "backgroundColor": "#14b8a6",
+    "borderColor": "#14b8a6",
+    "extendedProps": {
+      "eventType": "economic",
+      "description": "한국 주요 경제지표: 한국 CPI 발표",
+      "importance": "high",
+      "details": "시간: 08:00\\n발표기관: 한국은행/통계청\\n영향도: high",
+      "market": "Korea",
+      "time": "08:00"
+    }
+  },
+  {
+    "id": "kr_economic_2025-10-16",
+    "title": "🇰🇷 한국은행 기준금리 결정",
+    "start": "2025-10-16",
+    "backgroundColor": "#14b8a6",
+    "borderColor": "#14b8a6",
+    "extendedProps": {
+      "eventType": "economic",
+      "description": "한국 주요 경제지표: 한국은행 기준금리 결정",
+      "importance": "very_high",
+      "details": "시간: 08:00\\n발표기관: 한국은행/통계청\\n영향도: very_high",
+      "market": "Korea",
+      "time": "08:00"
+    }
+  },
+  {
+    "id": "kr_economic_2025-11-27",
+    "title": "🇰🇷 한국은행 기준금리 결정",
+    "start": "2025-11-27",
+    "backgroundColor": "#14b8a6",
+    "borderColor": "#14b8a6",
+    "extendedProps": {
+      "eventType": "economic",
+      "description": "한국 주요 경제지표: 한국은행 기준금리 결정",
+      "importance": "very_high",
+      "details": "시간: 08:00\\n발표기관: 한국은행/통계청\\n영향도: very_high",
+      "market": "Korea",
+      "time": "08:00"
+    }
+  },
+  {
+    "id": "crypto_2025-01-11",
+    "title": "₿ 비트코인 ETF 승인 1주년",
+    "start": "2025-01-11",
+    "backgroundColor": "#f97316",
+    "borderColor": "#f97316",
+    "extendedProps": {
+      "eventType": "crypto",
+      "description": "가상화폐 시장 주요 이벤트: 비트코인 ETF 승인 1주년",
+      "importance": "high",
+      "details": "영향도: high\\n시장: 글로벌 가상화폐\\n관련 코인: BTC, ETH 등",
+      "market": "Crypto"
+    }
+  },
+  {
+    "id": "crypto_2025-03-12",
+    "title": "₿ 이더리움 상하이 업그레이드 2주년",
+    "start": "2025-03-12",
+    "backgroundColor": "#f97316",
+    "borderColor": "#f97316",
+    "extendedProps": {
+      "eventType": "crypto",
+      "description": "가상화폐 시장 주요 이벤트: 이더리움 상하이 업그레이드 2주년",
+      "importance": "medium",
+      "details": "영향도: medium\\n시장: 글로벌 가상화폐\\n관련 코인: BTC, ETH 등",
+      "market": "Crypto"
+    }
+  },
+  {
+    "id": "crypto_2025-04-20",
+    "title": "₿ 비트코인 반감기 1주년",
+    "start": "2025-04-20",
+    "backgroundColor": "#f97316",
+    "borderColor": "#f97316",
+    "extendedProps": {
+      "eventType": "crypto",
+      "description": "가상화폐 시장 주요 이벤트: 비트코인 반감기 1주년",
+      "importance": "very_high",
+      "details": "영향도: very_high\\n시장: 글로벌 가상화폐\\n관련 코인: BTC, ETH 등",
+      "market": "Crypto"
+    }
+  },
+  {
+    "id": "crypto_2025-06-15",
+    "title": "₿ 솔라나 생태계 컨퍼런스",
     "start": "2025-06-15",
-    "className": "event-ipo",
-    "description": "하이브리드테크 신규 상장",
+    "backgroundColor": "#f97316",
+    "borderColor": "#f97316",
     "extendedProps": {
-      "eventType": "ipo",
-      "companyName": "하이브리드테크",
-      "sector": "AI/로봇",
+      "eventType": "crypto",
+      "description": "가상화폐 시장 주요 이벤트: 솔라나 생태계 컨퍼런스",
       "importance": "medium",
-      "details": "신규 상장 기업\n업종: AI/로봇\n공모가격대: 15,000-18,000원\n주목 포인트: 성장 가능성 높은 신규 상장주",
-      "time": "09:00",
-      "priceRange": "15,000-18,000원"
+      "details": "영향도: medium\\n시장: 글로벌 가상화폐\\n관련 코인: BTC, ETH 등",
+      "market": "Crypto"
     }
   },
   {
-    "id": "real_ipo_2025-07-01",
-    "title": "바이오젠테크 IPO 상장",
-    "start": "2025-07-01",
-    "className": "event-ipo",
-    "description": "바이오젠테크 신규 상장",
+    "id": "crypto_2025-07-30",
+    "title": "₿ 리플 SEC 소송 결과 예상",
+    "start": "2025-07-30",
+    "backgroundColor": "#f97316",
+    "borderColor": "#f97316",
     "extendedProps": {
-      "eventType": "ipo",
-      "companyName": "바이오젠테크",
-      "sector": "바이오/신약",
-      "importance": "medium",
-      "details": "신규 상장 기업\n업종: 바이오/신약\n공모가격대: 22,000-26,000원\n주목 포인트: 성장 가능성 높은 신규 상장주",
-      "time": "09:00",
-      "priceRange": "22,000-26,000원"
+      "eventType": "crypto",
+      "description": "가상화폐 시장 주요 이벤트: 리플 SEC 소송 결과 예상",
+      "importance": "high",
+      "details": "영향도: high\\n시장: 글로벌 가상화폐\\n관련 코인: BTC, ETH 등",
+      "market": "Crypto"
     }
   },
   {
-    "id": "real_ipo_2025-07-20",
-    "title": "그린에너지솔루션 IPO 상장",
-    "start": "2025-07-20",
-    "className": "event-ipo",
-    "description": "그린에너지솔루션 신규 상장",
+    "id": "crypto_2025-09-15",
+    "title": "₿ 이더리움 2.0 완전 전환 3주년",
+    "start": "2025-09-15",
+    "backgroundColor": "#f97316",
+    "borderColor": "#f97316",
     "extendedProps": {
-      "eventType": "ipo",
-      "companyName": "그린에너지솔루션",
-      "sector": "신재생에너지",
+      "eventType": "crypto",
+      "description": "가상화폐 시장 주요 이벤트: 이더리움 2.0 완전 전환 3주년",
       "importance": "medium",
-      "details": "신규 상장 기업\n업종: 신재생에너지\n공모가격대: 12,000-15,000원\n주목 포인트: 성장 가능성 높은 신규 상장주",
-      "time": "09:00",
-      "priceRange": "12,000-15,000원"
+      "details": "영향도: medium\\n시장: 글로벌 가상화폐\\n관련 코인: BTC, ETH 등",
+      "market": "Crypto"
     }
   },
   {
-    "id": "real_ipo_2025-08-10",
-    "title": "핀테크플러스 IPO 상장",
-    "start": "2025-08-10",
-    "className": "event-ipo",
-    "description": "핀테크플러스 신규 상장",
+    "id": "crypto_2025-12-06",
+    "title": "₿ 도지코인 창립 12주년",
+    "start": "2025-12-06",
+    "backgroundColor": "#f97316",
+    "borderColor": "#f97316",
     "extendedProps": {
-      "eventType": "ipo",
-      "companyName": "핀테크플러스",
-      "sector": "핀테크/결제",
-      "importance": "medium",
-      "details": "신규 상장 기업\n업종: 핀테크/결제\n공모가격대: 20,000-24,000원\n주목 포인트: 성장 가능성 높은 신규 상장주",
-      "time": "09:00",
-      "priceRange": "20,000-24,000원"
+      "eventType": "crypto",
+      "description": "가상화폐 시장 주요 이벤트: 도지코인 창립 12주년",
+      "importance": "low",
+      "details": "영향도: low\\n시장: 글로벌 가상화폐\\n관련 코인: BTC, ETH 등",
+      "market": "Crypto"
     }
   },
   {
-    "id": "crypto_2025-06-08",
-    "title": "비트코인 반감기 1주년",
-    "start": "2025-06-08",
-    "className": "event-economic",
-    "description": "가상화폐 시장 주요 이벤트: 비트코인 반감기 1주년",
+    "id": "crypto_2025-12-31",
+    "title": "₿ 암호화폐 시장 연말 결산",
+    "start": "2025-12-31",
+    "backgroundColor": "#f97316",
+    "borderColor": "#f97316",
+    "extendedProps": {
+      "eventType": "crypto",
+      "description": "가상화폐 시장 주요 이벤트: 암호화폐 시장 연말 결산",
+      "importance": "medium",
+      "details": "영향도: medium\\n시장: 글로벌 가상화폐\\n관련 코인: BTC, ETH 등",
+      "market": "Crypto"
+    }
+  },
+  {
+    "id": "holiday_2025-01-01",
+    "title": "🏛️ 신정",
+    "start": "2025-01-01",
+    "backgroundColor": "#6b7280",
+    "borderColor": "#6b7280",
+    "extendedProps": {
+      "eventType": "holiday",
+      "description": "한국 공휴일: 신정 (증시 휴장)",
+      "importance": "low",
+      "details": "한국 증시 휴장일\\n해외 증시는 정상 거래",
+      "market": "Korea"
+    }
+  },
+  {
+    "id": "holiday_2025-01-28",
+    "title": "🏛️ 설날",
+    "start": "2025-01-28",
+    "backgroundColor": "#6b7280",
+    "borderColor": "#6b7280",
+    "extendedProps": {
+      "eventType": "holiday",
+      "description": "한국 공휴일: 설날 (증시 휴장)",
+      "importance": "low",
+      "details": "한국 증시 휴장일\\n해외 증시는 정상 거래",
+      "market": "Korea"
+    }
+  },
+  {
+    "id": "holiday_2025-01-29",
+    "title": "🏛️ 설날 연휴",
+    "start": "2025-01-29",
+    "backgroundColor": "#6b7280",
+    "borderColor": "#6b7280",
+    "extendedProps": {
+      "eventType": "holiday",
+      "description": "한국 공휴일: 설날 연휴 (증시 휴장)",
+      "importance": "low",
+      "details": "한국 증시 휴장일\\n해외 증시는 정상 거래",
+      "market": "Korea"
+    }
+  },
+  {
+    "id": "holiday_2025-01-30",
+    "title": "🏛️ 설날 연휴",
+    "start": "2025-01-30",
+    "backgroundColor": "#6b7280",
+    "borderColor": "#6b7280",
+    "extendedProps": {
+      "eventType": "holiday",
+      "description": "한국 공휴일: 설날 연휴 (증시 휴장)",
+      "importance": "low",
+      "details": "한국 증시 휴장일\\n해외 증시는 정상 거래",
+      "market": "Korea"
+    }
+  },
+  {
+    "id": "holiday_2025-03-01",
+    "title": "🏛️ 삼일절",
+    "start": "2025-03-01",
+    "backgroundColor": "#6b7280",
+    "borderColor": "#6b7280",
+    "extendedProps": {
+      "eventType": "holiday",
+      "description": "한국 공휴일: 삼일절 (증시 휴장)",
+      "importance": "low",
+      "details": "한국 증시 휴장일\\n해외 증시는 정상 거래",
+      "market": "Korea"
+    }
+  },
+  {
+    "id": "holiday_2025-05-05",
+    "title": "🏛️ 어린이날",
+    "start": "2025-05-05",
+    "backgroundColor": "#6b7280",
+    "borderColor": "#6b7280",
+    "extendedProps": {
+      "eventType": "holiday",
+      "description": "한국 공휴일: 어린이날 (증시 휴장)",
+      "importance": "low",
+      "details": "한국 증시 휴장일\\n해외 증시는 정상 거래",
+      "market": "Korea"
+    }
+  },
+  {
+    "id": "holiday_2025-05-05",
+    "title": "🏛️ 부처님오신날",
+    "start": "2025-05-05",
+    "backgroundColor": "#6b7280",
+    "borderColor": "#6b7280",
+    "extendedProps": {
+      "eventType": "holiday",
+      "description": "한국 공휴일: 부처님오신날 (증시 휴장)",
+      "importance": "low",
+      "details": "한국 증시 휴장일\\n해외 증시는 정상 거래",
+      "market": "Korea"
+    }
+  },
+  {
+    "id": "holiday_2025-06-06",
+    "title": "🏛️ 현충일",
+    "start": "2025-06-06",
+    "backgroundColor": "#6b7280",
+    "borderColor": "#6b7280",
+    "extendedProps": {
+      "eventType": "holiday",
+      "description": "한국 공휴일: 현충일 (증시 휴장)",
+      "importance": "low",
+      "details": "한국 증시 휴장일\\n해외 증시는 정상 거래",
+      "market": "Korea"
+    }
+  },
+  {
+    "id": "holiday_2025-08-15",
+    "title": "🏛️ 광복절",
+    "start": "2025-08-15",
+    "backgroundColor": "#6b7280",
+    "borderColor": "#6b7280",
+    "extendedProps": {
+      "eventType": "holiday",
+      "description": "한국 공휴일: 광복절 (증시 휴장)",
+      "importance": "low",
+      "details": "한국 증시 휴장일\\n해외 증시는 정상 거래",
+      "market": "Korea"
+    }
+  },
+  {
+    "id": "holiday_2025-10-06",
+    "title": "🏛️ 추석",
+    "start": "2025-10-06",
+    "backgroundColor": "#6b7280",
+    "borderColor": "#6b7280",
+    "extendedProps": {
+      "eventType": "holiday",
+      "description": "한국 공휴일: 추석 (증시 휴장)",
+      "importance": "low",
+      "details": "한국 증시 휴장일\\n해외 증시는 정상 거래",
+      "market": "Korea"
+    }
+  },
+  {
+    "id": "holiday_2025-10-07",
+    "title": "🏛️ 추석 연휴",
+    "start": "2025-10-07",
+    "backgroundColor": "#6b7280",
+    "borderColor": "#6b7280",
+    "extendedProps": {
+      "eventType": "holiday",
+      "description": "한국 공휴일: 추석 연휴 (증시 휴장)",
+      "importance": "low",
+      "details": "한국 증시 휴장일\\n해외 증시는 정상 거래",
+      "market": "Korea"
+    }
+  },
+  {
+    "id": "holiday_2025-10-08",
+    "title": "🏛️ 추석 연휴",
+    "start": "2025-10-08",
+    "backgroundColor": "#6b7280",
+    "borderColor": "#6b7280",
+    "extendedProps": {
+      "eventType": "holiday",
+      "description": "한국 공휴일: 추석 연휴 (증시 휴장)",
+      "importance": "low",
+      "details": "한국 증시 휴장일\\n해외 증시는 정상 거래",
+      "market": "Korea"
+    }
+  },
+  {
+    "id": "holiday_2025-10-03",
+    "title": "🏛️ 개천절",
+    "start": "2025-10-03",
+    "backgroundColor": "#6b7280",
+    "borderColor": "#6b7280",
+    "extendedProps": {
+      "eventType": "holiday",
+      "description": "한국 공휴일: 개천절 (증시 휴장)",
+      "importance": "low",
+      "details": "한국 증시 휴장일\\n해외 증시는 정상 거래",
+      "market": "Korea"
+    }
+  },
+  {
+    "id": "holiday_2025-10-09",
+    "title": "🏛️ 한글날",
+    "start": "2025-10-09",
+    "backgroundColor": "#6b7280",
+    "borderColor": "#6b7280",
+    "extendedProps": {
+      "eventType": "holiday",
+      "description": "한국 공휴일: 한글날 (증시 휴장)",
+      "importance": "low",
+      "details": "한국 증시 휴장일\\n해외 증시는 정상 거래",
+      "market": "Korea"
+    }
+  },
+  {
+    "id": "holiday_2025-12-25",
+    "title": "🏛️ 성탄절",
+    "start": "2025-12-25",
+    "backgroundColor": "#6b7280",
+    "borderColor": "#6b7280",
+    "extendedProps": {
+      "eventType": "holiday",
+      "description": "한국 공휴일: 성탄절 (증시 휴장)",
+      "importance": "low",
+      "details": "한국 증시 휴장일\\n해외 증시는 정상 거래",
+      "market": "Korea"
+    }
+  },
+  {
+    "id": "global_2025-01-20",
+    "title": "🌍 다보스 포럼",
+    "start": "2025-01-20",
+    "backgroundColor": "#8b5cf6",
+    "borderColor": "#8b5cf6",
     "extendedProps": {
       "eventType": "economic",
-      "importance": "high",
-      "details": "가상화폐 관련 이벤트\n영향도: high\n관련 종목: 업비트, 코인베이스 등 가상화폐 관련주",
-      "time": "10:00",
-      "category": "cryptocurrency"
+      "description": "글로벌 경제 이벤트: 다보스 포럼",
+      "importance": "medium",
+      "details": "시장: Global\\n영향도: 글로벌",
+      "market": "Global"
     }
   },
   {
-    "id": "crypto_2025-07-15",
-    "title": "이더리움 EIP 업그레이드",
+    "id": "global_2025-01-24",
+    "title": "🌍 일본 중앙은행 금리결정",
+    "start": "2025-01-24",
+    "backgroundColor": "#8b5cf6",
+    "borderColor": "#8b5cf6",
+    "extendedProps": {
+      "eventType": "economic",
+      "description": "글로벌 경제 이벤트: 일본 중앙은행 금리결정",
+      "importance": "medium",
+      "details": "시장: Japan\\n영향도: 글로벌",
+      "market": "Japan"
+    }
+  },
+  {
+    "id": "global_2025-01-23",
+    "title": "🌍 유럽중앙은행 회의",
+    "start": "2025-01-23",
+    "backgroundColor": "#8b5cf6",
+    "borderColor": "#8b5cf6",
+    "extendedProps": {
+      "eventType": "economic",
+      "description": "글로벌 경제 이벤트: 유럽중앙은행 회의",
+      "importance": "medium",
+      "details": "시장: Europe\\n영향도: 글로벌",
+      "market": "Europe"
+    }
+  },
+  {
+    "id": "global_2025-01-17",
+    "title": "🌍 중국 GDP 발표",
+    "start": "2025-01-17",
+    "backgroundColor": "#8b5cf6",
+    "borderColor": "#8b5cf6",
+    "extendedProps": {
+      "eventType": "economic",
+      "description": "글로벌 경제 이벤트: 중국 GDP 발표",
+      "importance": "medium",
+      "details": "시장: China\\n영향도: 글로벌",
+      "market": "China"
+    }
+  },
+  {
+    "id": "global_2025-03-19",
+    "title": "🌍 일본 중앙은행 금리결정",
+    "start": "2025-03-19",
+    "backgroundColor": "#8b5cf6",
+    "borderColor": "#8b5cf6",
+    "extendedProps": {
+      "eventType": "economic",
+      "description": "글로벌 경제 이벤트: 일본 중앙은행 금리결정",
+      "importance": "medium",
+      "details": "시장: Japan\\n영향도: 글로벌",
+      "market": "Japan"
+    }
+  },
+  {
+    "id": "global_2025-03-06",
+    "title": "🌍 유럽중앙은행 회의",
+    "start": "2025-03-06",
+    "backgroundColor": "#8b5cf6",
+    "borderColor": "#8b5cf6",
+    "extendedProps": {
+      "eventType": "economic",
+      "description": "글로벌 경제 이벤트: 유럽중앙은행 회의",
+      "importance": "medium",
+      "details": "시장: Europe\\n영향도: 글로벌",
+      "market": "Europe"
+    }
+  },
+  {
+    "id": "global_2025-06-13",
+    "title": "🌍 G7 정상회의",
+    "start": "2025-06-13",
+    "backgroundColor": "#8b5cf6",
+    "borderColor": "#8b5cf6",
+    "extendedProps": {
+      "eventType": "economic",
+      "description": "글로벌 경제 이벤트: G7 정상회의",
+      "importance": "medium",
+      "details": "시장: Global\\n영향도: 글로벌",
+      "market": "Global"
+    }
+  },
+  {
+    "id": "global_2025-06-16",
+    "title": "🌍 일본 중앙은행 금리결정",
+    "start": "2025-06-16",
+    "backgroundColor": "#8b5cf6",
+    "borderColor": "#8b5cf6",
+    "extendedProps": {
+      "eventType": "economic",
+      "description": "글로벌 경제 이벤트: 일본 중앙은행 금리결정",
+      "importance": "medium",
+      "details": "시장: Japan\\n영향도: 글로벌",
+      "market": "Japan"
+    }
+  },
+  {
+    "id": "global_2025-06-12",
+    "title": "🌍 유럽중앙은행 회의",
+    "start": "2025-06-12",
+    "backgroundColor": "#8b5cf6",
+    "borderColor": "#8b5cf6",
+    "extendedProps": {
+      "eventType": "economic",
+      "description": "글로벌 경제 이벤트: 유럽중앙은행 회의",
+      "importance": "medium",
+      "details": "시장: Europe\\n영향도: 글로벌",
+      "market": "Europe"
+    }
+  },
+  {
+    "id": "global_2025-07-15",
+    "title": "🌍 중국 GDP 발표",
     "start": "2025-07-15",
-    "className": "event-economic",
-    "description": "가상화폐 시장 주요 이벤트: 이더리움 EIP 업그레이드",
+    "backgroundColor": "#8b5cf6",
+    "borderColor": "#8b5cf6",
     "extendedProps": {
       "eventType": "economic",
+      "description": "글로벌 경제 이벤트: 중국 GDP 발표",
       "importance": "medium",
-      "details": "가상화폐 관련 이벤트\n영향도: medium\n관련 종목: 업비트, 코인베이스 등 가상화폐 관련주",
-      "time": "10:00",
-      "category": "cryptocurrency"
+      "details": "시장: China\\n영향도: 글로벌",
+      "market": "China"
     }
   },
   {
-    "id": "crypto_2025-08-05",
-    "title": "글로벌 암호화폐 규제 발표",
-    "start": "2025-08-05",
-    "className": "event-economic",
-    "description": "가상화폐 시장 주요 이벤트: 글로벌 암호화폐 규제 발표",
+    "id": "global_2025-09-20",
+    "title": "🌍 일본 중앙은행 금리결정",
+    "start": "2025-09-20",
+    "backgroundColor": "#8b5cf6",
+    "borderColor": "#8b5cf6",
     "extendedProps": {
       "eventType": "economic",
-      "importance": "high",
-      "details": "가상화폐 관련 이벤트\n영향도: high\n관련 종목: 업비트, 코인베이스 등 가상화폐 관련주",
-      "time": "10:00",
-      "category": "cryptocurrency"
+      "description": "글로벌 경제 이벤트: 일본 중앙은행 금리결정",
+      "importance": "medium",
+      "details": "시장: Japan\\n영향도: 글로벌",
+      "market": "Japan"
+    }
+  },
+  {
+    "id": "global_2025-09-12",
+    "title": "🌍 유럽중앙은행 회의",
+    "start": "2025-09-12",
+    "backgroundColor": "#8b5cf6",
+    "borderColor": "#8b5cf6",
+    "extendedProps": {
+      "eventType": "economic",
+      "description": "글로벌 경제 이벤트: 유럽중앙은행 회의",
+      "importance": "medium",
+      "details": "시장: Europe\\n영향도: 글로벌",
+      "market": "Europe"
+    }
+  },
+  {
+    "id": "global_2025-12-19",
+    "title": "🌍 일본 중앙은행 금리결정",
+    "start": "2025-12-19",
+    "backgroundColor": "#8b5cf6",
+    "borderColor": "#8b5cf6",
+    "extendedProps": {
+      "eventType": "economic",
+      "description": "글로벌 경제 이벤트: 일본 중앙은행 금리결정",
+      "importance": "medium",
+      "details": "시장: Japan\\n영향도: 글로벌",
+      "market": "Japan"
     }
   }
 ]

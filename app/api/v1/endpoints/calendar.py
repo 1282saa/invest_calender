@@ -7,12 +7,16 @@ import json
 from app.db.session import get_db
 from app.db import models
 from app.schemas.calendar import (
-    CalendarEventResponse, 
+    CalendarEventResponse,
+    UpcomingEventResponse,
+    UpcomingEvent,
+    CalendarFilters,
+    EventTypeFilter,
     CalendarEventCreate,
-    CalendarEventUpdate,
-    EventTypeFilter
+    CalendarEventUpdate
 )
-from app.services.kis_api import kis_api_client
+from app.services.kis_api_refactored import kis_api_client_refactored as kis_api_client
+from app.services.dart_api import dart_api_client
 from app.api.deps import get_current_user_optional, get_current_user
 
 router = APIRouter()

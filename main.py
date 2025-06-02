@@ -10,6 +10,7 @@ from app.api.v1.api import api_router
 from app.db.session import engine
 from app.db import models
 from app.core.scheduler import start_scheduler
+from app.services.data_pipeline import start_data_pipeline, stop_data_pipeline
 
 # 데이터베이스 테이블 생성
 models.Base.metadata.create_all(bind=engine)
@@ -18,8 +19,16 @@ models.Base.metadata.create_all(bind=engine)
 async def lifespan(app: FastAPI):
     # 시작 시 실행
     start_scheduler()
+    
+    # 데이터 파이프라인 시작 (환경변수로 제어)
+    if settings.ENABLE_DATA_PIPELINE:
+        await start_data_pipeline()
+    
     yield
+    
     # 종료 시 실행
+    if settings.ENABLE_DATA_PIPELINE:
+        await stop_data_pipeline()
 
 app = FastAPI(
     title="투자캘린더 - InvestCalendar",

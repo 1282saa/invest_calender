@@ -1,15 +1,34 @@
-# 환경 설정
+# 개발 데이터베이스
+*.db
+*.db-journal
+
+# 개인 설정
 .env
 .env.local
 .env.*.local
 
+# 임시 토큰 파일
+kis_token.json
+
+# 캐시 데이터
+calendar_events.json
+
+# OS 파일
+.DS_Store
+Thumbs.db
+
+# 텍스트 문서
+*.txt
+
+# 리팩토링 예시 파일
+*_example.py
+refactoring_example.py
+
 # 데이터베이스
-*.db
 *.sqlite
 *.sqlite3
 
 # 토큰 파일
-kis_token.json
 KIS*
 
 # Python
@@ -27,10 +46,6 @@ env/
 .idea/
 *.swp
 *.swo
-
-# OS
-.DS_Store
-Thumbs.db
 
 # 로그
 *.log

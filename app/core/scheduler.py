@@ -4,9 +4,10 @@ from datetime import datetime
 import logging
 import asyncio
 
-from app.services.kis_api import kis_api_client
 from app.db.session import SessionLocal
 from app.db import models
+from app.services.kis_api_refactored import kis_api_client_refactored as kis_api_client
+from app.services.dart_api import dart_api_client
 
 logger = logging.getLogger(__name__)
 
